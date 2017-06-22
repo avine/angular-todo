@@ -1,0 +1,14 @@
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <input [value]="title" [ngModel]="title" name="title" type="text" placeholder="Qu'y a-t-il à faire ?" />
+</form>
+
+<ul>
+  <li *ngFor='let item of listService.get(); let i = index'>
+     <input (change)="changeDone(i, $event.target.checked)" [checked]="item.done" type="checkbox" />
+     <span [ngClass]="{ 'done': item.done }" >{{ item.title }}</span>
+     <button (click)="delete(i)">Effacer</button>
+  </li>
+</ul>
+
+<div>Reste à faire : {{ remain() }}/{{ this.listService.list.length }}</div>
