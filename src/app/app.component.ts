@@ -12,22 +12,24 @@ export class AppComponent {
 
   constructor(listService: ListService) {
     this.listService = listService;
-    console.log(this);
   }
 
-  onSubmit(fields) {
+  onCreate() {
     if (this.title) {
       this.listService.create(this.title);
       this.title = '';
     }
   }
 
-  onDelete(index) {
-    this.listService.delete(index);
-  }
-
-  onUpdateDone(index, checked) {
-    this.listService.list[index].done = checked;
+  onChangeStatus(event, index) {
+    switch (event.type) {
+      case 'done':
+        this.listService.done(index, event.value);
+      break;
+      case 'delete':
+        this.listService.delete(index);
+      break;
+    }
   }
 
   remain(): number {

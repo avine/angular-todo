@@ -1,15 +1,11 @@
 
-<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+<form #f="ngForm" (ngSubmit)="onCreate(f.value)">
   <input [(ngModel)]="title" name="title" type="text" placeholder="Qu'y a-t-il à faire ?" autofocus />
 </form>
 
 <ul>
   <li *ngFor='let item of listService.get(); let i = index'>
-    <label>
-      <input (change)="onUpdateDone(i, $event.target.checked)" [checked]="item.done" type="checkbox" />
-      <span [ngClass]="{ 'done': item.done }" >{{ item.title }}</span>
-    </label>
-    <button (click)="onDelete(i)">Effacer</button>
+    <app-todo-item [title]="item.title" [done]="item.done" (changeStatus)="onChangeStatus($event, i)"></app-todo-item>
   </li>
 </ul>
 

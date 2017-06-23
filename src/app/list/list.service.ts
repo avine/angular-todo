@@ -29,6 +29,10 @@ export class ListService {
     this.list.splice(index, 1);
   }
 
+  done(index, status: boolean = true) {
+    this.list[index].done = status;
+  }
+
   length() {
     return this.list.length;
   }

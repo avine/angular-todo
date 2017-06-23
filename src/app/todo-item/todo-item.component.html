@@ -1,0 +1,6 @@
+<label>
+  <input [(ngModel)]="done" (change)="onCheck()" type="checkbox" />
+  <span [ngClass]="{ 'done': done }" >{{ title }}</span>
+</label>
+
+<button (click)="onDelete()">Effacer</button>
