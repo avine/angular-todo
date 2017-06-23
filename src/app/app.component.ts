@@ -15,19 +15,18 @@ export class AppComponent {
     console.log(this);
   }
 
-  onSubmit(f) {
-    if (f.title) {
-      this.listService.create(f.title);
+  onSubmit(fields) {
+    if (this.title) {
+      this.listService.create(this.title);
       this.title = '';
     }
   }
 
-  delete(index) {
+  onDelete(index) {
     this.listService.delete(index);
   }
 
-  changeDone(index, checked) {
-    console.log(index, checked);
+  onUpdateDone(index, checked) {
     this.listService.list[index].done = checked;
   }
 

@@ -13,6 +13,11 @@ p {
     line-height: 1.5rem;
 }
 
+input, button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
 app-root {
     display: block;
     max-width: 600px;

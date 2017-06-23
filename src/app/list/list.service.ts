@@ -28,4 +28,8 @@ export class ListService {
   delete(index) {
     this.list.splice(index, 1);
   }
+
+  length() {
+    return this.list.length;
+  }
 }
