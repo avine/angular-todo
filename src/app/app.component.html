@@ -1,14 +1,20 @@
+<div class="container">
 
-<form #f="ngForm" (ngSubmit)="onCreate(f.value)">
-  <input [(ngModel)]="title" name="title" type="text" placeholder="Qu'y a-t-il à faire ?" autofocus />
-</form>
+  <h1>A faire...</h1>
+  <hr />
 
-<ul>
-  <li *ngFor='let item of listService.get(); let i = index'>
-    <app-todo-item [title]="item.title" [done]="item.done" (changeStatus)="onChangeStatus($event, i)"></app-todo-item>
-  </li>
-</ul>
+  <form #f="ngForm" (ngSubmit)="onCreate(f.value)">
+    <input [(ngModel)]="title" name="title" type="text" placeholder="Qu'y a-t-il à faire ?" autofocus class="form-control" />
+  </form>
 
-<div *ngIf="this.listService.length()">
-  Reste à faire : {{ remain() }}/{{ this.listService.length() }}
+  <table class="table">
+    <tr *ngFor='let item of listService.get(); let i = index'
+      app-todo-item [title]="item.title" [done]="item.done" (changeStatus)="onChangeStatus($event, i)">
+    </tr>
+  </table>
+
+  <div *ngIf="this.listService.length()" class="text-center">
+    Reste à faire : <span class="badge badge-warning">{{ remain() }}/{{ this.listService.length() }}</span>
+  </div>
+
 </div>
