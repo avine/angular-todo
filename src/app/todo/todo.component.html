@@ -9,5 +9,5 @@
 </table>
 
 <div *ngIf="this.listService.length()" class="text-center">
-  Reste à faire : <span class="badge badge-warning">{{ remain() }}/{{ this.listService.length() }}</span>
+  Reste à faire : <span class="badge" [ngClass]="remainBadge()">{{ remain() }}/{{ this.listService.length() }}</span>
 </div>
