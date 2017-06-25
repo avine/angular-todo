@@ -1,9 +1,9 @@
 <div class="container">
 
-  <h1>A faire...</h1>
+  <h1 class="text-center">A faire...</h1>
   <hr />
 
-  <form #f="ngForm" (ngSubmit)="onCreate(f.value)">
+  <form #f="ngForm" (ngSubmit)="onCreate()">
     <input [(ngModel)]="title" name="title" type="text" placeholder="Qu'y a-t-il à faire ?" autofocus class="form-control" />
   </form>
 
