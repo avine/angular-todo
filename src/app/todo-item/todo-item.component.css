@@ -1,4 +1,13 @@
-.done {
+.todo-dbclick {
+    padding-left: 0.5rem;
+    cursor: pointer;
+}
+
+.todo-done {
     color: #aaa;
     text-decoration: line-through;
+}
+
+.todo-hide {
+    display: none;
 }

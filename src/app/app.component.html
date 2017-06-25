@@ -3,7 +3,7 @@
   <h1 class="text-center">A faire...</h1>
   <hr />
 
-  <form #f="ngForm" (ngSubmit)="onCreate()">
+  <form (ngSubmit)="onCreate()">
     <input [(ngModel)]="title" name="title" type="text" placeholder="Qu'y a-t-il à faire ?" autofocus class="form-control" />
   </form>
 

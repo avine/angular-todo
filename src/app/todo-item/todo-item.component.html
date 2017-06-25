@@ -1,13 +1,27 @@
 <td>
 
-  <label>
-    <input [(ngModel)]="done" (change)="onCheck()" type="checkbox" />
-    <span [ngClass]="{ 'done': done }" >{{ title }}</span>
-  </label>
+  <input *ngIf="!isEdited" [(ngModel)]="done" (change)="onCheck()" type="checkbox" />
+  <span *ngIf="!isEdited" (dblclick)="onEdit()" [ngClass]="{ 'todo-done': done }" class="todo-dbclick">{{ title }}</span>
+
+  <form *ngIf="isEdited" #f="ngForm" (ngSubmit)="onUpdate(f)">
+    <div class="input-group">
+
+      <input [ngModel]="title" name="title" type="text" class="form-control" />
+
+      <span class="input-group-btn todo-hide">
+        <button class="btn btn-primary" type="button">Valider</button>
+      </span>
+
+      <span class="input-group-btn">
+        <button (click)="onCancel()" class="btn btn-outline-warning" type="button">Annuler</button>
+      </span>
+
+    </div>
+  </form>
 
 </td>
 <td class="text-right">
 
-  <button (click)="onDelete()" class="btn btn-outline-primary btn-sm">Effacer</button>
+  <button (click)="onDelete()" class="btn btn-outline-danger btn-sm">Effacer</button>
 
 </td>

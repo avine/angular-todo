@@ -1,20 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ListItemModel } from './listItem.model';
 
-const LIST = [{
-    title: 'Acheter des fruits',
-    done: true
-  }, {
-    title: 'Téléphoner à Lucien',
-    done: false
-  }];
-
 @Injectable()
 export class ListService {
   list: ListItemModel[];
 
   constructor() {
-    this.list = LIST;
+    this.list = [];
   }
 
   get() {
