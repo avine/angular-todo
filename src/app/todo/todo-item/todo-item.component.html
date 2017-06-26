@@ -1,12 +1,12 @@
 <td>
 
   <input *ngIf="!isEdited" [(ngModel)]="done" (change)="onCheck()" type="checkbox" />
-  <span *ngIf="!isEdited" (dblclick)="onEdit()" [ngClass]="{ 'todo-done': done }" class="todo-dbclick">{{ title }}</span>
+  <span *ngIf="!isEdited" (dblclick)="onEdit(updateRef)" [ngClass]="{ 'todo-done': done }" class="todo-dbclick">{{ title }}</span>
 
-  <form *ngIf="isEdited" #f="ngForm" (ngSubmit)="onUpdate(f)">
-    <div class="input-group">
+  <form #f="ngForm" (ngSubmit)="onUpdate(f)" [ngClass]="{ 'todo-hide': !isEdited }">
+    <div class="input-group input-group-sm">
 
-      <input [ngModel]="title" name="title" type="text" class="form-control" />
+      <input #updateRef [ngModel]="title" name="title" type="text" class="form-control" />
 
       <span class="input-group-btn todo-hide">
         <button class="btn btn-primary" type="button">Valider</button>

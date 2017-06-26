@@ -23,8 +23,9 @@ export class TodoItemComponent implements OnInit {
     this.changeStatus.emit({ type: 'done', value: this.done });
   }
 
-  onEdit() {
+  onEdit(updateRef) {
     this.isEdited = true;
+    setTimeout(() => updateRef.focus(), 0); // Hack: wait for the next UI repaint (when the input is visible...)
   }
 
   onUpdate(form) {
