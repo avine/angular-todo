@@ -17,7 +17,9 @@ import { TodoItemComponent } from './todo/todo-item/todo-item.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [ListService],
+  providers: [
+    ListService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
