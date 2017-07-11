@@ -8,9 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class TodoItemComponent implements OnInit {
   @Input() title: string;
   @Input() done: boolean;
-  isEdited: boolean = false;
-
   @Output() changeStatus: EventEmitter<any> = new EventEmitter();
+  isEdited: boolean = false;
 
   constructor() {
 
@@ -37,8 +36,9 @@ export class TodoItemComponent implements OnInit {
     }
   }
 
-  onCancel() {
-    this.isEdited = false;    
+  onCancel(updateRef) {
+    this.isEdited = false; 
+    updateRef.value = this.title;   
   }
 
   onDelete() {
