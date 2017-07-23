@@ -9,7 +9,7 @@ export class TodoItemComponent implements OnInit {
   @Input() title: string;
   @Input() done: boolean;
   @Output() changeStatus: EventEmitter<any> = new EventEmitter();
-  isEdited: boolean = false;
+  isEdited = false;
 
   constructor() {
 
@@ -37,8 +37,8 @@ export class TodoItemComponent implements OnInit {
   }
 
   onCancel(updateRef) {
-    this.isEdited = false; 
-    updateRef.value = this.title;   
+    this.isEdited = false;
+    updateRef.value = this.title;
   }
 
   onDelete() {

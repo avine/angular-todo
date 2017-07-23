@@ -46,7 +46,8 @@ export class TodoComponent implements OnInit {
   }
 
   remainBadge() {
-    let remain = this.remain() / this.listService.length(), badgeColor;
+    const remain = this.remain() / this.listService.length();
+    let badgeColor;
     if (remain >= 0.75) {
       badgeColor = 'danger';
     } else if (remain >= 0.5) {
