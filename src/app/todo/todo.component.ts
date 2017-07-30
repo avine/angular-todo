@@ -1,20 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+
 import { ListService } from '../list/list.service';
+import { ListItemModel } from '../list/listItem.model';
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css']
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent implements OnInit, OnDestroy {
   listService: ListService;
+  list: ListItemModel[];
   title: string;
+  subscription: Subscription;
 
   constructor(listService: ListService) {
     this.listService = listService;
+    this.list = this.listService.get();
   }
 
   ngOnInit() {
+    this.subscription = this.listService.changed.subscribe(() => {
+      console.log('UPDATE!');
+      this.list = this.listService.get();
+    });
+  }
+
+  ngOnDestroy () {
+    this.subscription.unsubscribe();
   }
 
   onCreate() {
@@ -29,15 +43,18 @@ export class TodoComponent implements OnInit {
       case 'done':
         this.listService.done(index, event.value);
       break;
-      case 'delete':
-        this.listService.delete(index);
+      case 'rename':
+        this.listService.rename(index, event.value);
+      break;
+      case 'archive':
+        this.listService.archive(index);
       break;
     }
   }
 
   remain(): number {
     let count = 0;
-    this.listService.list.forEach(function (item) {
+    this.list.forEach(function (item) {
       if (!item.done) {
         count++;
       }
@@ -46,7 +63,7 @@ export class TodoComponent implements OnInit {
   }
 
   remainBadge() {
-    const remain = this.remain() / this.listService.length();
+    const remain = this.remain() / this.list.length;
     let badgeColor;
     if (remain >= 0.75) {
       badgeColor = 'danger';

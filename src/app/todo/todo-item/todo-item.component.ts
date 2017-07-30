@@ -31,6 +31,7 @@ export class TodoItemComponent implements OnInit {
     if (form.value.title) {
       this.title = form.value.title;
       this.isEdited = false;
+      this.changeStatus.emit({ type: 'rename', value: this.title });
     } else {
       this.onDelete();
     }
@@ -42,6 +43,6 @@ export class TodoItemComponent implements OnInit {
   }
 
   onDelete() {
-    this.changeStatus.emit({ type: 'delete' });
+    this.changeStatus.emit({ type: 'archive' });
   }
 }

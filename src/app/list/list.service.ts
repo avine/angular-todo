@@ -1,31 +1,49 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
+
 import { ListItemModel } from './listItem.model';
 
-@Injectable()
+// @Injectable()
 export class ListService {
   list: ListItemModel[];
+  changed = new Subject<void>();
 
   constructor() {
     this.list = [];
   }
 
-  get() {
-    return this.list;
+  get(archived = false) {
+    return this.list.filter(item => {
+      return item.archive === archived
+    });
+  }
+
+  length(archived = false) {
+    return this.get(archived).length;
   }
 
   create(title, done = false) {
-    this.list.push({ title, done });
+    this.list.push({ title, done, archive: false });
+    this.changed.next();
   }
 
-  delete(index) {
+  done(index: number, status: boolean = true) {
+    this.get()[index].done = status;
+    this.changed.next();
+  }
+
+  rename(index: number, title: string) {
+    this.get()[index].title = title;
+    this.changed.next();
+  }
+
+  archive(index) {
+    this.get()[index].archive = true;
+    this.changed.next();
+  }
+
+  /*delete(index) { // TODO: it's not clear what is the index...
     this.list.splice(index, 1);
-  }
-
-  done(index, status: boolean = true) {
-    this.list[index].done = status;
-  }
-
-  length() {
-    return this.list.length;
-  }
+    this.changed.next();
+  }*/
 }
