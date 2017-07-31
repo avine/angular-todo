@@ -14,7 +14,7 @@ export class ListService {
 
   get(archived = false) {
     return this.list.filter(item => {
-      return item.archived === archived
+      return item.archived === archived;
     });
   }
 
@@ -22,28 +22,50 @@ export class ListService {
     return this.get(archived).length;
   }
 
-  create(title, done = false) {
-    this.list.push({ title, done, archived: false });
+  create(title) {
+    this.list.push({
+      id: new Date().getTime(),
+      title,
+      done: false,
+      archived: false
+    });
     this.changed.next();
   }
 
-  done(index: number, status: boolean = true) {
-    this.get()[index].done = status;
-    this.changed.next();
+  done(id: number, status: boolean = true) {
+    this.list.forEach(item => {
+      if (item.id === id) {
+        item.done = status;
+        this.changed.next();
+      }
+    });
   }
 
-  rename(index: number, title: string) {
-    this.get()[index].title = title;
-    this.changed.next();
+  rename(id: number, title: string) {
+    this.list.forEach(item => {
+      if (item.id === id) {
+        item.title = title;
+        this.changed.next();
+      }
+    });
   }
 
-  archive(index) {
-    this.get()[index].archived = true;
-    this.changed.next();
+  archive(id: number, archived = true) {
+    this.list.forEach(item => {
+      if (item.id === id && item.archived !== archived) {
+        item.archived = archived;
+        this.changed.next();
+      }
+    });
   }
 
-  /*delete(index) { // TODO: it's not clear what is the index...
-    this.list.splice(index, 1);
-    this.changed.next();
-  }*/
+  delete(id: number) {
+    const length = this.list.length;
+    this.list = this.list.filter(item => {
+      return item.id !== id;
+    });
+    if (this.list.length !== length) {
+      this.changed.next();
+    }
+  }
 }

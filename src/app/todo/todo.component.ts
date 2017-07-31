@@ -22,7 +22,6 @@ export class TodoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.listService.changed.subscribe(() => {
-      console.log('UPDATE!');
       this.list = this.listService.get();
     });
   }
@@ -38,16 +37,16 @@ export class TodoComponent implements OnInit, OnDestroy {
     }
   }
 
-  onChangeStatus(event, index) {
+  onChangeStatus(id, event) {
     switch (event.type) {
       case 'done':
-        this.listService.done(index, event.value);
+        this.listService.done(id, event.value);
       break;
       case 'rename':
-        this.listService.rename(index, event.value);
+        this.listService.rename(id, event.value);
       break;
       case 'archive':
-        this.listService.archive(index);
+        this.listService.archive(id);
       break;
     }
   }
