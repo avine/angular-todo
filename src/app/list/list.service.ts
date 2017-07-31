@@ -14,7 +14,7 @@ export class ListService {
 
   get(archived = false) {
     return this.list.filter(item => {
-      return item.archive === archived
+      return item.archived === archived
     });
   }
 
@@ -23,7 +23,7 @@ export class ListService {
   }
 
   create(title, done = false) {
-    this.list.push({ title, done, archive: false });
+    this.list.push({ title, done, archived: false });
     this.changed.next();
   }
 
@@ -38,7 +38,7 @@ export class ListService {
   }
 
   archive(index) {
-    this.get()[index].archive = true;
+    this.get()[index].archived = true;
     this.changed.next();
   }
 

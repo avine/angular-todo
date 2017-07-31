@@ -33,7 +33,7 @@ export class TodoItemComponent implements OnInit {
       this.isEdited = false;
       this.changeStatus.emit({ type: 'rename', value: this.title });
     } else {
-      this.onDelete();
+      this.onArchive();
     }
   }
 
@@ -42,7 +42,7 @@ export class TodoItemComponent implements OnInit {
     updateRef.value = this.title;
   }
 
-  onDelete() {
+  onArchive() {
     this.changeStatus.emit({ type: 'archive' });
   }
 }
