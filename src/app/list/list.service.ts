@@ -23,12 +23,7 @@ export class ListService {
   }
 
   create(title) {
-    this.list.push({
-      id: new Date().getTime(),
-      title,
-      done: false,
-      archived: false
-    });
+    this.list.push(new ListItemModel(title));
     this.changed.next();
   }
 
