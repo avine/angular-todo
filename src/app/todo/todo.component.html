@@ -7,14 +7,16 @@
     class="form-control" autofocus autocomplete="off" />
 </form>
 
-<table class="table">
-  <tr *ngFor='let item of list'
-    app-todo-item
-    [title]="item.title"
-    [done]="item.done"
-    (changeStatus)="onChangeStatus(item.id, $event)">
-  </tr>
-</table>
+<br />
+
+<app-todo-item
+  *ngFor="let item of list"
+  [title]="item.title"
+  [done]="item.done"
+  (changeStatus)="onChangeStatus(item.id, $event)">
+</app-todo-item>
+
+<br />
 
 <div *ngIf="list.length" class="text-center">
   Reste à faire :

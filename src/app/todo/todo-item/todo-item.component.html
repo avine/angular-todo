@@ -1,27 +1,29 @@
-<td>
+<div class="row p-2">
+  <div class="col">
 
-  <input *ngIf="!isEdited" [(ngModel)]="done" (change)="onCheck()" type="checkbox" />
-  <span *ngIf="!isEdited" (dblclick)="onEdit(updateRef)" [ngClass]="{ 'todo-done': done }" class="todo-dbclick">{{ title }}</span>
+    <input *ngIf="!isEdited" [(ngModel)]="done" (change)="onCheck()" type="checkbox" />
+    <span *ngIf="!isEdited" (dblclick)="onEdit(updateRef)" [ngClass]="{ 'todo-done': done }" class="todo-dbclick">{{ title }}</span>
 
-  <form #f="ngForm" (ngSubmit)="onUpdate(f)" [ngClass]="{ 'todo-hide': !isEdited }">
-    <div class="input-group input-group-sm">
+    <form #f="ngForm" (ngSubmit)="onUpdate(f)" [ngClass]="{ 'todo-hide': !isEdited }">
+      <div class="input-group input-group-sm">
 
-      <input #updateRef [ngModel]="title" name="title" type="text" class="form-control" />
+        <input #updateRef [ngModel]="title" name="title" type="text" class="form-control" />
 
-      <span class="input-group-btn todo-hide">
-        <button class="btn btn-primary" type="button">Valider</button>
-      </span>
+        <span class="input-group-btn todo-hide">
+          <button class="btn btn-primary" type="button">Valider</button>
+        </span>
 
-      <span class="input-group-btn">
-        <button (click)="onCancel(updateRef)" class="btn btn-outline-warning" type="button">Annuler</button>
-      </span>
+        <span class="input-group-btn">
+          <button (click)="onCancel(updateRef)" class="btn btn-outline-warning" type="button">Annuler</button>
+        </span>
 
-    </div>
-  </form>
+      </div>
+    </form>
 
-</td>
-<td class="text-right">
+  </div>
+  <div class="col col-auto text-right">
 
-  <button (click)="onArchive()" class="btn btn-outline-danger btn-sm">Archiver</button>
+    <button (click)="onArchive()" class="btn btn-outline-danger btn-sm">Archiver</button>
 
-</td>
+  </div>
+</div>
