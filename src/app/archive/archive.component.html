@@ -1,3 +1,9 @@
-<ul>
-  <li *ngFor="let item of list">{{ item.title }}</li>
-</ul>
+<div class="row p-2" *ngFor="let item of list">
+  <div class="col" [ngClass]="{'todo-done': item.done}">
+    {{ item.title }}
+  </div>
+  <div class="col col-auto">
+    <button class="btn btn-outline-success btn-sm" (click)="onAction('unarchive', item)">Restaurer</button>
+    <button class="btn btn-outline-danger btn-sm" (click)="onAction('delete', item)">Effacer</button>
+  </div>
+</div>

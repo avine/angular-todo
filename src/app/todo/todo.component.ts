@@ -10,17 +10,16 @@ import { ListItemModel } from '../list/listItem.model';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit, OnDestroy {
-  listService: ListService;
   list: ListItemModel[];
   title: string;
   subscription: Subscription;
 
-  constructor(listService: ListService) {
+  constructor(private listService: ListService) {
     this.listService = listService;
-    this.list = this.listService.get();
   }
 
   ngOnInit() {
+    this.list = this.listService.get();
     this.subscription = this.listService.changed.subscribe(() => {
       this.list = this.listService.get();
     });
@@ -41,13 +40,15 @@ export class TodoComponent implements OnInit, OnDestroy {
     switch (event.type) {
       case 'done':
         this.listService.done(id, event.value);
-      break;
+        break;
+
       case 'rename':
         this.listService.rename(id, event.value);
-      break;
+        break;
+
       case 'archive':
         this.listService.archive(id);
-      break;
+        break;
     }
   }
 
