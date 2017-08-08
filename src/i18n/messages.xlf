@@ -33,7 +33,7 @@
         <source>Languages</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/header/header.component.ts</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">24</context>
         </context-group>
         <note priority="1" from="description">Menu</note>
         <note priority="1" from="meaning">Languages</note>
@@ -100,6 +100,15 @@
         </context-group>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">Delete</note>
+      </trans-unit>
+      <trans-unit id="NoArchive" datatype="html">
+        <source>No Archive</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/archive/archive.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <note priority="1" from="description">Info</note>
+        <note priority="1" from="meaning">No Archive</note>
       </trans-unit>
     </body>
   </file>

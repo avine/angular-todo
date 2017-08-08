@@ -72,6 +72,12 @@
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">Delete</note>
       </trans-unit>
+      <trans-unit id="NoArchive" datatype="html">
+        <source>No Archive</source>
+        <target>Aucune archive</target>
+        <note priority="1" from="description">Info</note>
+        <note priority="1" from="meaning">No Archive</note>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -7,3 +7,7 @@
     <button class="btn btn-outline-danger btn-sm" (click)="onAction('delete', item)" i18n="Delete|Button@@Delete">Delete</button>
   </div>
 </div>
+
+<p class="text-center" *ngIf="!list.length">
+  <small i18n="No Archive|Info@@NoArchive">No Archive</small>
+</p>
