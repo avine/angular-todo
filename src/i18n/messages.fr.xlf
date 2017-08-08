@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="Todo" datatype="html">
+        <source>Todo</source>
+        <target>A faire</target>
+        <note priority="1" from="description">Menu</note>
+        <note priority="1" from="meaning">Todo</note>
+      </trans-unit>
+      <trans-unit id="Archive" datatype="html">
+        <source>Archive</source>
+        <target>Archive</target>
+        <note priority="1" from="description">Menu</note>
+        <note priority="1" from="meaning">Archive</note>
+      </trans-unit>
+      <trans-unit id="ViewOnGithub" datatype="html">
+        <source>View on Github</source>
+        <target>Voir sur Github</target>
+        <note priority="1" from="description">Menu</note>
+        <note priority="1" from="meaning">View on Github</note>
+      </trans-unit>
+      <trans-unit id="Languages" datatype="html">
+        <source>Languages</source>
+        <target>Langues</target>
+        <note priority="1" from="description">Menu</note>
+        <note priority="1" from="meaning">Languages</note>
+      </trans-unit>
+      <trans-unit id="WhatToDo" datatype="html">
+        <source>What to do ?</source>
+        <target>Qu'y a-t-il à faire ?</target>
+        <note priority="1" from="description">Placeholder</note>
+        <note priority="1" from="meaning">What to do ?</note>
+      </trans-unit>
+      <trans-unit id="Remains" datatype="html">
+        <source>Remains:</source>
+        <target>Reste à faire :</target>
+        <note priority="1" from="description">Description</note>
+        <note priority="1" from="meaning">Remains</note>
+      </trans-unit>
+      <trans-unit id="ValidateButton" datatype="html">
+        <source>Validate</source>
+        <target>Valider</target>
+        <note priority="1" from="description">Button</note>
+        <note priority="1" from="meaning">Validate</note>
+      </trans-unit>
+      <trans-unit id="ResetButton" datatype="html">
+        <source>Reset</source>
+        <target>Annuler</target>
+        <note priority="1" from="description">Button</note>
+        <note priority="1" from="meaning">Reset</note>
+      </trans-unit>
+      <trans-unit id="ArchiveButton" datatype="html">
+        <source>Archive</source>
+        <target>Archiver</target>
+        <note priority="1" from="description">Button</note>
+        <note priority="1" from="meaning">Archive</note>
+      </trans-unit>
+      <trans-unit id="Unarchive" datatype="html">
+        <source>Unarchive</source>
+        <target>Restaurer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/archive/archive.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">Button</note>
+        <note priority="1" from="meaning">Unarchive</note>
+      </trans-unit>
+      <trans-unit id="Delete" datatype="html">
+        <source>Delete</source>
+        <target>Effacer</target>
+        <note priority="1" from="description">Button</note>
+        <note priority="1" from="meaning">Delete</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

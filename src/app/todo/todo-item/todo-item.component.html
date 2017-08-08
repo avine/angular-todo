@@ -10,11 +10,11 @@
         <input #updateRef [ngModel]="title" name="title" type="text" class="form-control" />
 
         <span class="input-group-btn todo-hide">
-          <button class="btn btn-primary" type="button">Valider</button>
+          <button class="btn btn-primary" type="button" i18n="Validate|Button@@ValidateButton">Validate</button>
         </span>
 
         <span class="input-group-btn">
-          <button (click)="onCancel(updateRef)" class="btn btn-outline-secondary" type="button">Annuler</button>
+          <button (click)="onCancel(updateRef)" class="btn btn-outline-secondary" type="button" i18n="Reset|Button@@ResetButton">Reset</button>
         </span>
 
       </div>
@@ -23,7 +23,7 @@
   </div>
   <div class="col col-auto text-right">
 
-    <button (click)="onArchive()" class="btn btn-outline-warning btn-sm">Archiver</button>
+    <button (click)="onArchive()" class="btn btn-outline-warning btn-sm" i18n="Archive|Button@@ArchiveButton">Archive</button>
 
   </div>
 </div>

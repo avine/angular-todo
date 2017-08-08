@@ -3,7 +3,7 @@
     {{ item.title }}
   </div>
   <div class="col col-auto">
-    <button class="btn btn-outline-success btn-sm" (click)="onAction('unarchive', item)">Restaurer</button>
-    <button class="btn btn-outline-danger btn-sm" (click)="onAction('delete', item)">Effacer</button>
+    <button class="btn btn-outline-success btn-sm" (click)="onAction('unarchive', item)" i18n="Unarchive|Button@@Unarchive">Unarchive</button>
+    <button class="btn btn-outline-danger btn-sm" (click)="onAction('delete', item)" i18n="Delete|Button@@Delete">Delete</button>
   </div>
 </div>

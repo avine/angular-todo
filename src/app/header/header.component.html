@@ -1,11 +1,33 @@
-<ul class="nav nav-pills">
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/todo" routerLinkActive="active">A faire</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/archive" routerLinkActive="active">Archive</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="https://github.com/avine/angular-todo" target="_blank">View on Github</a>
-  </li>
-</ul>
+<div class="row">
+  <div class="col">
+
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/todo" routerLinkActive="active" i18n="Todo|Menu@@Todo">Todo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/archive" routerLinkActive="active" i18n="Archive|Menu@@Archive">Archive</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/avine/angular-todo" target="_blank" i18n="View on Github|Menu@@ViewOnGithub">View on Github</a>
+      </li>
+    </ul>
+
+  </div>
+  <div class="col col-auto">
+
+    <div class="nav-link dropdown" [ngClass]="{'show': dropDown}">
+      <button
+        class="btn btn-secondary btn-sm dropdown-toggle"
+        type="button"
+        (click)="dropDown = !dropDown"
+        i18n="Languages|Menu@@Languages">Languages</button>
+
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="../en/">English</a>
+        <a class="dropdown-item" href="../fr/">Français</a>
+      </div>
+    </div>
+
+  </div>
+</div>

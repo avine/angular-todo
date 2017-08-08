@@ -3,7 +3,8 @@
     [(ngModel)]="title"
     name="title"
     type="text"
-    placeholder="Qu'y a-t-il à faire ?"
+    placeholder="What to do ?"
+    i18n-placeholder="What to do ?|Placeholder@@WhatToDo"
     class="form-control" autofocus autocomplete="off" />
 </form>
 
@@ -19,7 +20,7 @@
 <br />
 
 <div *ngIf="list.length" class="text-center">
-  Reste à faire :
+  <ng-container i18n="Remains|Description@@Remains">Remains:</ng-container>
   <span class="badge" [ngClass]="remainBadge()">
     {{ remain() }}/{{ list.length }}
   </span>
