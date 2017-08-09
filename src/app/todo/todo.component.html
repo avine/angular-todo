@@ -1,20 +1,14 @@
-<form (ngSubmit)="onCreate()">
-  <input
-    [(ngModel)]="title"
-    name="title"
-    type="text"
-    placeholder="What to do ?"
-    i18n-placeholder="What to do ?|Placeholder@@WhatToDo"
-    class="form-control" autofocus autocomplete="off" />
-</form>
+<app-todo-add></app-todo-add>
 
 <br />
+
+<app-tabs [tabDefault]="tabId" (tabChanged)="onTabChanged($event)"></app-tabs>
 
 <app-todo-item
   *ngFor="let item of list"
   [title]="item.title"
   [done]="item.done"
-  (changeStatus)="onChangeStatus(item.id, $event)">
+  (statusChanged)="onStatusChanged(item.id, $event)">
 </app-todo-item>
 
 <br />

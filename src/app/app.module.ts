@@ -3,25 +3,29 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { ListService } from './list/list.service';
+import { ListService } from './list/list.service'; // TODO: rename into something else...
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { TodoComponent } from './todo/todo.component';
+import { TabsComponent } from './tabs/tabs.component';
+import { TodoComponent } from './todo/todo.component'; // TODO: rename into ListComponent
+import { TodoAddComponent } from './todo/todo-add/todo-add.component';
 import { TodoItemComponent } from './todo/todo-item/todo-item.component';
 import { ArchiveComponent } from './archive/archive.component';
 
 const routes = [
-  { path: 'todo', component: TodoComponent },
+  { path: 'list', component: TodoComponent },
   { path: 'archive', component: ArchiveComponent },
-  { path: '**', redirectTo: '/todo' }
+  { path: '**', redirectTo: '/list' }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    TabsComponent,
     TodoComponent,
+    TodoAddComponent,
     TodoItemComponent,
     ArchiveComponent
   ],

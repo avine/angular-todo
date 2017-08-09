@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" (click)="onChange('all')" [ngClass]="{'active': tabId === 'all'}" i18n="All|Tab@@AllTab">All</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="onChange('left')" [ngClass]="{'active': tabId === 'left'}" i18n="Left|Tab@@LeftTab">Left</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="onChange('done')" [ngClass]="{'active': tabId === 'done'}" i18n="Done|Tab@@DoneTab">Done</a>
+  </li>
+</ul>

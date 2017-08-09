@@ -12,9 +12,13 @@ export class ListService {
     this.list = [];
   }
 
-  get(archived = false) {
+  get(archived = false, status = 'all') {
     return this.list.filter(item => {
-      return item.archived === archived;
+      return item.archived === archived && (
+        (status === 'all' || !status) ||
+        status === 'done' && item.done ||
+        status === 'left' && !item.done
+      );
     });
   }
 

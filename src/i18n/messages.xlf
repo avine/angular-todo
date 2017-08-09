@@ -47,23 +47,50 @@
         <note priority="1" from="description">Menu</note>
         <note priority="1" from="meaning">Languages</note>
       </trans-unit>
-      <trans-unit id="WhatToDo" datatype="html">
-        <source>What to do ?</source>
+      <trans-unit id="AllTab" datatype="html">
+        <source>All</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/todo/todo.component.ts</context>
+          <context context-type="sourcefile">app/tabs/tabs.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Tab</note>
+        <note priority="1" from="meaning">All</note>
+      </trans-unit>
+      <trans-unit id="LeftTab" datatype="html">
+        <source>Left</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tabs/tabs.component.ts</context>
           <context context-type="linenumber">6</context>
         </context-group>
-        <note priority="1" from="description">Placeholder</note>
-        <note priority="1" from="meaning">What to do ?</note>
+        <note priority="1" from="description">Tab</note>
+        <note priority="1" from="meaning">Left</note>
+      </trans-unit>
+      <trans-unit id="DoneTab" datatype="html">
+        <source>Done</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tabs/tabs.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Tab</note>
+        <note priority="1" from="meaning">Done</note>
       </trans-unit>
       <trans-unit id="Remains" datatype="html">
         <source>Remains:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/todo/todo.component.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">17</context>
         </context-group>
         <note priority="1" from="description">Description</note>
         <note priority="1" from="meaning">Remains</note>
+      </trans-unit>
+      <trans-unit id="WhatToDo" datatype="html">
+        <source>What to do ?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/todo/todo-add/todo-add.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">Placeholder</note>
+        <note priority="1" from="meaning">What to do ?</note>
       </trans-unit>
       <trans-unit id="ValidateButton" datatype="html">
         <source>Validate</source>

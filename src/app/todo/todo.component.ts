@@ -11,17 +11,17 @@ import { ListItemModel } from '../list/listItem.model';
 })
 export class TodoComponent implements OnInit, OnDestroy {
   list: ListItemModel[];
-  title: string;
   subscription: Subscription;
+  tabId: string = 'all'; // TODO: remove this default value and initialize it with tabId property from the TabComponent
 
   constructor(private listService: ListService) {
     this.listService = listService;
   }
 
   ngOnInit() {
-    this.list = this.listService.get();
+    this.getList();
     this.subscription = this.listService.changed.subscribe(() => {
-      this.list = this.listService.get();
+      this.getList();
     });
   }
 
@@ -29,14 +29,16 @@ export class TodoComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onCreate() {
-    if (this.title) {
-      this.listService.create(this.title);
-      this.title = '';
-    }
+  getList() {
+    this.list = this.listService.get(false, this.tabId);
   }
 
-  onChangeStatus(id, event) {
+  onTabChanged(tabId) {
+    this.tabId = tabId;
+    this.getList();
+  }
+
+  onStatusChanged(id, event) {
     switch (event.type) {
       case 'done':
         this.listService.done(id, event.value);

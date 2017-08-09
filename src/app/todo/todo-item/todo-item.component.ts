@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class TodoItemComponent implements OnInit {
   @Input() title: string;
   @Input() done: boolean;
-  @Output() changeStatus: EventEmitter<any> = new EventEmitter();
+  @Output() statusChanged: EventEmitter<any> = new EventEmitter();
   isEdited = false;
 
   constructor() {
@@ -19,7 +19,7 @@ export class TodoItemComponent implements OnInit {
   }
 
   onCheck() {
-    this.changeStatus.emit({ type: 'done', value: this.done });
+    this.statusChanged.emit({ type: 'done', value: this.done });
   }
 
   onEdit(updateRef) {
@@ -31,7 +31,7 @@ export class TodoItemComponent implements OnInit {
     if (form.value.title) {
       this.title = form.value.title;
       this.isEdited = false;
-      this.changeStatus.emit({ type: 'rename', value: this.title });
+      this.statusChanged.emit({ type: 'rename', value: this.title });
     } else {
       this.onArchive();
     }
@@ -43,6 +43,6 @@ export class TodoItemComponent implements OnInit {
   }
 
   onArchive() {
-    this.changeStatus.emit({ type: 'archive' });
+    this.statusChanged.emit({ type: 'archive' });
   }
 }

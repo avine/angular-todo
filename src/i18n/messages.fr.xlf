@@ -32,17 +32,35 @@
         <note priority="1" from="description">Menu</note>
         <note priority="1" from="meaning">Languages</note>
       </trans-unit>
-      <trans-unit id="WhatToDo" datatype="html">
-        <source>What to do ?</source>
-        <target>Qu'y a-t-il à faire ?</target>
-        <note priority="1" from="description">Placeholder</note>
-        <note priority="1" from="meaning">What to do ?</note>
+      <trans-unit id="AllTab" datatype="html">
+        <source>All</source>
+        <target>Tout</target>
+        <note priority="1" from="description">Tab</note>
+        <note priority="1" from="meaning">All</note>
+      </trans-unit>
+      <trans-unit id="LeftTab" datatype="html">
+        <source>Left</source>
+        <target>Reste</target>
+        <note priority="1" from="description">Tab</note>
+        <note priority="1" from="meaning">Left</note>
+      </trans-unit>
+      <trans-unit id="DoneTab" datatype="html">
+        <source>Done</source>
+        <target>Fait</target>
+        <note priority="1" from="description">Tab</note>
+        <note priority="1" from="meaning">Done</note>
       </trans-unit>
       <trans-unit id="Remains" datatype="html">
         <source>Remains:</source>
         <target>Reste à faire :</target>
         <note priority="1" from="description">Description</note>
         <note priority="1" from="meaning">Remains</note>
+      </trans-unit>
+      <trans-unit id="WhatToDo" datatype="html">
+        <source>What to do ?</source>
+        <target>Qu'y a-t-il à faire ?</target>
+        <note priority="1" from="description">Placeholder</note>
+        <note priority="1" from="meaning">What to do ?</note>
       </trans-unit>
       <trans-unit id="ValidateButton" datatype="html">
         <source>Validate</source>
