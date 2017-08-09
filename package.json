@@ -10,7 +10,7 @@
     "build": "lang=en; echo \"$(tput setaf 2)Building '${lang}'...$(tput sgr0)\" && ng build --output-path=dist/$lang --aot -prod --bh ./ --locale=$lang",
     "build-i18n": "for lang in fr; do echo \"\n$(tput setaf 2)Building '${lang}'...$(tput sgr0)\" && ng build --output-path=dist/$lang --aot -prod --bh ./ --i18n-file=src/i18n/messages.$lang.xlf --i18n-format=xlf --locale=$lang; done",
     "deploy": "npm run build && npm run build-i18n && cp src/redirection.html ./dist/index.html",
-    "serve-deploy": "http-server ./dist/ -o",
+    "start-deploy": "http-server ./dist/ -o",
     "i18n": "ng xi18n --i18nFormat=xlf --output-path=src/i18n/",
     "test": "ng test",
     "lint": "ng lint",
