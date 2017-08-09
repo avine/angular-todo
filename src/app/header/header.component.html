@@ -16,14 +16,13 @@
   </div>
   <div class="col col-auto">
 
-    <div class="nav-link dropdown" [ngClass]="{'show': dropDown}">
+    <div class="nav-link dropdown">
       <button
+        data-toggle="dropdown" id="dropLanguages" type="button"
         class="btn btn-secondary btn-sm dropdown-toggle"
-        type="button"
-        (click)="dropDown = !dropDown"
         i18n="Languages|Menu@@Languages">Languages</button>
 
-      <div class="dropdown-menu">
+      <div class="dropdown-menu" aria-labelledby="dropLanguages">
         <a class="dropdown-item" href="../en/">English</a>
         <a class="dropdown-item" href="../fr/">Français</a>
       </div>
