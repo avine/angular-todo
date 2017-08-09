@@ -1,9 +1,19 @@
-<div class="row">
-  <div class="col">
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <button
+    class="navbar-toggler navbar-toggler-right" type="button"
+    data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <ul class="nav nav-pills">
+  <h1 class="navbar-brand mb-0" i18n="Todo|Brand@@TodoBrand">Todo</h1>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/todo" routerLinkActive="active" i18n="Todo|Menu@@Todo">Todo</a>
+        <a class="nav-link" routerLink="/todo" routerLinkActive="active" i18n="List|Menu@@List">List</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/archive" routerLinkActive="active" i18n="Archive|Menu@@Archive">Archive</a>
@@ -13,13 +23,10 @@
       </li>
     </ul>
 
-  </div>
-  <div class="col col-auto">
-
-    <div class="nav-link dropdown">
+    <div class="dropdown">
       <button
         data-toggle="dropdown" id="dropLanguages" type="button"
-        class="btn btn-secondary btn-sm dropdown-toggle"
+        class="btn btn-secondary dropdown-toggle"
         i18n="Languages|Menu@@Languages">Languages</button>
 
       <div class="dropdown-menu" aria-labelledby="dropLanguages">
@@ -27,6 +34,5 @@
         <a class="dropdown-item" href="../fr/">Français</a>
       </div>
     </div>
-
   </div>
-</div>
+</nav>

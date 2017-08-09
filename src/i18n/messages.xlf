@@ -2,20 +2,29 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="Todo" datatype="html">
+      <trans-unit id="TodoBrand" datatype="html">
         <source>Todo</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/header/header.component.ts</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description">Brand</note>
+        <note priority="1" from="meaning">Todo</note>
+      </trans-unit>
+      <trans-unit id="List" datatype="html">
+        <source>List</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/header/header.component.ts</context>
+          <context context-type="linenumber">16</context>
         </context-group>
         <note priority="1" from="description">Menu</note>
-        <note priority="1" from="meaning">Todo</note>
+        <note priority="1" from="meaning">List</note>
       </trans-unit>
       <trans-unit id="Archive" datatype="html">
         <source>Archive</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/header/header.component.ts</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">19</context>
         </context-group>
         <note priority="1" from="description">Menu</note>
         <note priority="1" from="meaning">Archive</note>
@@ -24,7 +33,7 @@
         <source>View on Github</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/header/header.component.ts</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">22</context>
         </context-group>
         <note priority="1" from="description">Menu</note>
         <note priority="1" from="meaning">View on Github</note>
@@ -33,7 +42,7 @@
         <source>Languages</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/header/header.component.ts</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">30</context>
         </context-group>
         <note priority="1" from="description">Menu</note>
         <note priority="1" from="meaning">Languages</note>

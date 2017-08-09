@@ -2,11 +2,17 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="Todo" datatype="html">
+      <trans-unit id="TodoBrand" datatype="html">
         <source>Todo</source>
         <target>A faire</target>
-        <note priority="1" from="description">Menu</note>
+        <note priority="1" from="description">Brand</note>
         <note priority="1" from="meaning">Todo</note>
+      </trans-unit>
+      <trans-unit id="List" datatype="html">
+        <source>List</source>
+        <target>Liste</target>
+        <note priority="1" from="description">Menu</note>
+        <note priority="1" from="meaning">List</note>
       </trans-unit>
       <trans-unit id="Archive" datatype="html">
         <source>Archive</source>
