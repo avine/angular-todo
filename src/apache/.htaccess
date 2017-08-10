@@ -3,15 +3,15 @@ DirectoryIndex index.html
 RewriteEngine On
 
 # URL prefix to be used for RewriteRule directives that substitute a relative path.
-RewriteBase /projects/angular-todo/
+RewriteBase {{BASE_HREF}}
 
 # Use current language
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} /projects/angular-todo/(en|fr)
+RewriteCond %{REQUEST_URI} {{BASE_HREF}}{{LANGS}}
 RewriteRule ^ %1/index.html [L]
 
 # Use default language
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ en/index.html [L]
+RewriteRule ^ {{DEFAULT_LANG}}/index.html [L]
