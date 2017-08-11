@@ -6,17 +6,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./tabs.component.css']
 })
 export class TabsComponent implements OnInit {
-  tabId = 'all';
+  tabId: string;
 
-  @Input() tabDefault: string; // TODO: merge with tagId
+  @Input() tabDefault: string;
   @Output() tabChanged: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
-    if (this.tabDefault && this.tabDefault !== this.tabId) {
-      this.tabId = this.tabDefault;
-    }
+    this.tabId = this.tabDefault;
   }
 
   onChange(tabId: string) {

@@ -13,7 +13,7 @@
 
 <br />
 
-<div *ngIf="list.length" class="text-center">
+<div *ngIf="tabId === 'all' && list.length" class="text-center">
   <ng-container i18n="Remains|Description@@Remains">Remains:</ng-container>
   <span class="badge" [ngClass]="remainBadge()">
     {{ remain() }}/{{ list.length }}

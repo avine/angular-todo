@@ -14,9 +14,9 @@ import { TodoItemComponent } from './todo/todo-item/todo-item.component';
 import { ArchiveComponent } from './archive/archive.component';
 
 const routes = [
-  { path: 'list', component: TodoComponent },
+  { path: 'todo/:tabId', component: TodoComponent }, // TODO: check the list of expected routes 'all', 'left', 'done'
   { path: 'archive', component: ArchiveComponent },
-  { path: '**', redirectTo: '/list' }
+  { path: '**', redirectTo: '/todo/all' }
 ];
 
 @NgModule({

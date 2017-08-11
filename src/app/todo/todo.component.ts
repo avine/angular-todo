@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { ListService } from '../list/list.service';
@@ -12,17 +13,18 @@ import { ListItemModel } from '../list/listItem.model';
 export class TodoComponent implements OnInit, OnDestroy {
   list: ListItemModel[];
   subscription: Subscription;
-  tabId: string = 'all'; // TODO: remove this default value and initialize it with tabId property from the TabComponent
+  tabId = 'all';
 
-  constructor(private listService: ListService) {
-    this.listService = listService;
+  constructor(private listService: ListService,
+              private router: Router,
+              private route: ActivatedRoute) {
+
   }
 
   ngOnInit() {
     this.getList();
-    this.subscription = this.listService.changed.subscribe(() => {
-      this.getList();
-    });
+    this.subscription = this.listService.changed.subscribe(() => this.getList());
+    this.route.params.subscribe((params: Params) => this.tabId = params.tabId); // TODO check params.tabId
   }
 
   ngOnDestroy () {
@@ -36,6 +38,7 @@ export class TodoComponent implements OnInit, OnDestroy {
   onTabChanged(tabId) {
     this.tabId = tabId;
     this.getList();
+    this.router.navigate(['/todo/', tabId]);
   }
 
   onStatusChanged(id, event) {
