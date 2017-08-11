@@ -55,12 +55,12 @@ if (!langs.length) {
   let htaccess = fs.readFileSync('src/apache/.htaccess', 'utf8');
   htaccess =
     htaccess
-      .replace(/{{BASE_HREF}}/g, bh)
-      .replace(/{{LANGS}}/g, `(${langs.join('|')})`)
-      .replace(/{{DEFAULT_LANG}}/g, defaultLang);
+      .replace(/<BASE_HREF>/g, bh)
+      .replace(/<LANGS>/g, `(${langs.join('|')})`)
+      .replace(/<DEFAULT_LANG>/g, defaultLang);
 
   let index = fs.readFileSync('src/apache/index.html', 'utf8');
-  index = index.replace(/{{DEFAULT_LANG}}/g, defaultLang);
+  index = index.replace(/<DEFAULT_LANG>/g, defaultLang);
 
   fs.writeFileSync('dist/.htaccess', htaccess, 'utf8');
   fs.writeFileSync('dist/index.html', index, 'utf8');
