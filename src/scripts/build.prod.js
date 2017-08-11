@@ -11,8 +11,8 @@ const exec = command => cp.execSync(command, {stdio: 'inherit'});
 const bh = argv['bh'] || '/';
 
 // (option: --langs) List of languages separated by `,``
-// Notice: the first language is the one used in the app source code
-// (which don't have "messages.<lang>.xlf" defined)
+// Notice: the first language should be the one used in the app source code
+// (which don't have a defined "messages.<lang>.xlf" file)
 const langs = argv['langs'] ? argv['langs'].split(',') : [];
 
 // (option: --dl) Default language to use in apache config when redirecting bad url
@@ -41,12 +41,17 @@ if (!langs.length) {
   // Build app
   execBuildCmd();
 } else {
-  console.log(`\nDefault language (for apache config): "${defaultLang}"`);
-
   // Build app for each language
   langs.forEach((lang, index) => execBuildCmd(lang, index !== 0));
 
   // Build apache config
+  console.log(`
+Configuring apache (using default language: "${defaultLang}"):
+  "dist/.htaccess"
+  "dist/index.html"
+`
+  );
+
   let htaccess = fs.readFileSync('src/apache/.htaccess', 'utf8');
   htaccess =
     htaccess
@@ -57,7 +62,6 @@ if (!langs.length) {
   let index = fs.readFileSync('src/apache/index.html', 'utf8');
   index = index.replace(/{{DEFAULT_LANG}}/g, defaultLang);
 
-  console.log('\nBuilding apache config: "dist/.htaccess" and "dist/index.html"');
   fs.writeFileSync('dist/.htaccess', htaccess, 'utf8');
   fs.writeFileSync('dist/index.html', index, 'utf8');
 }
