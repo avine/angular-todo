@@ -3,6 +3,7 @@
 const yargs = require('yargs');
 const cp = require('child_process');
 const fs = require('fs');
+const chalk = require('chalk');
 
 const argv = yargs.argv;
 const exec = command => cp.execSync(command, {stdio: 'inherit'});
@@ -27,14 +28,14 @@ const execBuildCmd = (lang, hasXlf) => {
     const xlfOptions = hasXlf ? '--i18n-file=src/i18n/messages.$lang.xlf --i18n-format=xlf' : '';
     cmd = `lang=${lang}; ng build --output-path=dist/$lang --aot -prod --bh ${bh}$lang/ --locale=$lang ${xlfOptions}`;
   }
-  console.log(`\nBuilding "dist/${lang || ''}"...`);
+  console.log(chalk.green(`\nBuilding "dist/${lang || ''}"...`));
   console.log(`${cmd}\n`);
   exec(cmd);
 };
 
 // Start building...
 
-console.log('### Building App for production ###');
+console.log(chalk.white.bgBlue('Building App for production'));
 console.log(`\nUsing baseHref: "${bh}"`);
 
 if (!langs.length) {
@@ -45,12 +46,11 @@ if (!langs.length) {
   langs.forEach((lang, index) => execBuildCmd(lang, index !== 0));
 
   // Build apache config
-  console.log(`
-Configuring apache (using default language: "${defaultLang}"):
-  "dist/.htaccess"
-  "dist/index.html"
-`
-  );
+  console.log(chalk.green(`\nConfiguring apache (using default language: "${defaultLang}"):`));
+  console.log([
+    'dist/.htaccess',
+    'dist/index.html'
+  ].join('\n'));
 
   let htaccess = fs.readFileSync('src/apache/.htaccess', 'utf8');
   htaccess =
@@ -65,3 +65,5 @@ Configuring apache (using default language: "${defaultLang}"):
   fs.writeFileSync('dist/.htaccess', htaccess, 'utf8');
   fs.writeFileSync('dist/index.html', index, 'utf8');
 }
+
+console.log();

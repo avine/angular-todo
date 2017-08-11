@@ -53,6 +53,7 @@
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
+    "chalk": "^2.1.0",
     "codelyzer": "~3.0.1",
     "http-server": "^0.10.0",
     "jasmine-core": "~2.6.2",
