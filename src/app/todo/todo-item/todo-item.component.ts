@@ -1,13 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+import { ListItemModel } from '../../list/listItem.model';
+
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.css']
 })
 export class TodoItemComponent implements OnInit {
-  @Input() title: string;
-  @Input() done: boolean;
+  @Input() item: ListItemModel;
   @Output() statusChanged: EventEmitter<any> = new EventEmitter();
   isEdited = false;
 
@@ -19,7 +20,7 @@ export class TodoItemComponent implements OnInit {
   }
 
   onCheck() {
-    this.statusChanged.emit({ type: 'done', value: this.done });
+    this.statusChanged.emit({ type: 'done', value: this.item.done });
   }
 
   onEdit(updateRef) {
@@ -29,9 +30,9 @@ export class TodoItemComponent implements OnInit {
 
   onUpdate(form) {
     if (form.value.title) {
-      this.title = form.value.title;
+      this.item.title = form.value.title;
       this.isEdited = false;
-      this.statusChanged.emit({ type: 'rename', value: this.title });
+      this.statusChanged.emit({ type: 'rename', value: this.item.title });
     } else {
       this.onArchive();
     }
@@ -39,7 +40,7 @@ export class TodoItemComponent implements OnInit {
 
   onCancel(updateRef) {
     this.isEdited = false;
-    updateRef.value = this.title;
+    updateRef.value = this.item.title;
   }
 
   onArchive() {

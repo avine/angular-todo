@@ -6,8 +6,7 @@
 
 <app-todo-item
   *ngFor="let item of list"
-  [title]="item.title"
-  [done]="item.done"
+  [item]="item"
   (statusChanged)="onStatusChanged(item.id, $event)">
 </app-todo-item>
 

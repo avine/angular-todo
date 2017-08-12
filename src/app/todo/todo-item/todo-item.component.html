@@ -1,29 +1,32 @@
 <div class="row p-2">
-  <div class="col">
+    <div class="col">
 
-    <input *ngIf="!isEdited" [(ngModel)]="done" (change)="onCheck()" type="checkbox" />
-    <span *ngIf="!isEdited" (dblclick)="onEdit(updateRef)" [ngClass]="{ 'todo-done': done }" class="todo-dbclick">{{ title }}</span>
+      <input *ngIf="!isEdited" [(ngModel)]="item.done" (change)="onCheck()" type="checkbox" />
+      <span *ngIf="!isEdited" (dblclick)="onEdit(updateRef)" [ngClass]="{ 'todo-done': item.done }" class="todo-dbclick">
+        {{ item.title }}
+        <!--<small class="text-muted">({{ item.id | date:'short' }})</small>-->
+      </span>
 
-    <form #f="ngForm" (ngSubmit)="onUpdate(f)" [ngClass]="{ 'todo-hide': !isEdited }">
-      <div class="input-group input-group-sm">
+      <form #f="ngForm" (ngSubmit)="onUpdate(f)" [ngClass]="{ 'todo-hide': !isEdited }">
+        <div class="input-group input-group-sm">
 
-        <input #updateRef [ngModel]="title" name="title" type="text" class="form-control" />
+          <input #updateRef [ngModel]="item.title" name="title" type="text" class="form-control" />
 
-        <span class="input-group-btn todo-hide">
-          <button class="btn btn-primary" type="button" i18n="Validate|Button@@ValidateButton">Validate</button>
-        </span>
+          <span class="input-group-btn todo-hide">
+            <button class="btn btn-primary" type="button" i18n="Validate|Button@@ValidateButton">Validate</button>
+          </span>
 
-        <span class="input-group-btn">
-          <button (click)="onCancel(updateRef)" class="btn btn-outline-secondary" type="button" i18n="Reset|Button@@ResetButton">Reset</button>
-        </span>
+          <span class="input-group-btn">
+            <button (click)="onCancel(updateRef)" class="btn btn-outline-secondary" type="button" i18n="Reset|Button@@ResetButton">Reset</button>
+          </span>
 
-      </div>
-    </form>
+        </div>
+      </form>
 
+    </div>
+    <div class="col col-auto text-right">
+
+      <button (click)="onArchive()" class="btn btn-outline-warning btn-sm" i18n="Archive|Button@@ArchiveButton">Archive</button>
+
+    </div>
   </div>
-  <div class="col col-auto text-right">
-
-    <button (click)="onArchive()" class="btn btn-outline-warning btn-sm" i18n="Archive|Button@@ArchiveButton">Archive</button>
-
-  </div>
-</div>
