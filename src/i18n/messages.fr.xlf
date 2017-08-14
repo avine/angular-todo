@@ -42,6 +42,10 @@
         <source>What to do ?</source>
         <target>Qu'y a-t-il à faire ?</target>
       </trans-unit>
+      <trans-unit id="FilterBy" datatype="html">
+        <source>Filter</source>
+        <target>Filtrer</target>
+      </trans-unit>
       <trans-unit id="ValidateButton" datatype="html">
         <source>Validate</source>
         <target>Valider</target>

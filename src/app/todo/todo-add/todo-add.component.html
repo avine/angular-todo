@@ -1,9 +1,24 @@
 <form (ngSubmit)="onCreate()">
-  <input
-    [(ngModel)]="title"
-    name="title"
-    type="text"
-    placeholder="What to do ?"
-    i18n-placeholder="What to do ?|Placeholder@@WhatToDo"
-    class="form-control" autofocus autocomplete="off" />
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" (click)="onSwitchRole()" />
+    </span>
+
+    <input *ngIf="role === 'add'"
+      [(ngModel)]="title"
+      name="title"
+      type="text"
+      placeholder="What to do ?"
+      i18n-placeholder="What to do ?|Placeholder@@WhatToDo"
+      class="form-control" autofocus autocomplete="off" />
+
+    <input *ngIf="role === 'filter'"
+      (input)="onFilter()"
+      [(ngModel)]="filter"
+      name="filter"
+      type="text"
+      placeholder="Filter"
+      i18n-placeholder="Filter|Placeholder@@FilterBy"
+      class="form-control" autofocus autocomplete="off" />
+  </div>
 </form>

@@ -1,11 +1,11 @@
-<app-todo-add></app-todo-add>
+<app-todo-add (filtered)="filtered = $event"></app-todo-add>
 
 <br />
 
 <app-tabs [tabDefault]="tabId" (tabChanged)="onTabChanged($event)"></app-tabs>
 
 <app-todo-item
-  *ngFor="let item of list"
+  *ngFor="let item of list | filter:filtered:'title'"
   [item]="item"
   (statusChanged)="onStatusChanged(item.id, $event)">
 </app-todo-item>

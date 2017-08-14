@@ -14,6 +14,7 @@ export class TodoComponent implements OnInit, OnDestroy {
   list: ListItemModel[];
   subscription: Subscription;
   tabId = 'all';
+  filtered: string;
 
   constructor(private listService: ListService,
               private router: Router,
