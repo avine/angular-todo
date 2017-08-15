@@ -1,14 +1,14 @@
 .todo-dbclick {
-    padding-left: 0.5rem;
-    cursor: pointer;
+  padding-left: 0.5rem;
+  cursor: pointer;
 }
 
 .todo-done {
-    color: #aaa;
-    text-decoration: line-through;
+  color: #aaa;
+  text-decoration: line-through;
 }
 
 .todo-hide {
-    position: absolute;
-    left: -9999px;
+  position: absolute;
+  left: -9999px;
 }

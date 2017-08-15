@@ -25,7 +25,9 @@ export class TodoItemComponent implements OnInit {
 
   onEdit(updateRef) {
     this.isEdited = true;
-    updateRef.focus();
+    try {
+      updateRef.focus();
+    } catch (e) {}
   }
 
   onUpdate(form) {
