@@ -2,8 +2,10 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 import { ListService } from './list/list.service'; // TODO: rename into something else...
+import { BackendService } from './list/backend.service';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -35,11 +37,13 @@ const routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpModule
   ],
   providers: [
     Title,
-    ListService
+    ListService,
+    BackendService
   ],
   bootstrap: [AppComponent]
 })

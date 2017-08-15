@@ -2,14 +2,26 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
 import { ListItemModel } from './listItem.model';
+import { BackendService } from './backend.service';
 
-// @Injectable()
+@Injectable()
 export class ListService {
   list: ListItemModel[];
   changed = new Subject<void>();
 
-  constructor() {
+  constructor(private backend: BackendService) {
     this.list = [];
+  }
+
+  fetchList() {
+    return this.backend.fetchList().subscribe(response => {
+      this.list = response;
+      this.changed.next();
+    });
+  }
+
+  saveList() {
+    return this.backend.saveList(this.list);
   }
 
   get(archived = false, status = 'all') {
