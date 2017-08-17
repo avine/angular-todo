@@ -1,30 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { environment } from '../../environments/environment';
-
-import 'rxjs/add/operator/map'; // Just import map
-// import { Operator } from 'rxjs/Rx'; // Or import all operators
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 
 import { ListItemModel } from './listItem.model';
 
 @Injectable()
 export class BackendService {
-  url: string;
+  items: FirebaseObjectObservable<any[]>;
 
-  constructor(private http: Http) {
-    this.url = environment.backendUrl;
+  constructor(private db: AngularFireDatabase) {
+    this.items = this.db.object('/list');
   }
 
-  fetchList() {
-    console.log('fetchList');
-    return this.http.get(this.url).map((response: Response) => {
-      console.log(response.json());
-      return response.json();
-    });
+  getList() {
+    return this.items;
   }
 
-  saveList(list: ListItemModel[]) {
-    console.log('saveList');
-    return this.http.put(this.url, list);
+  setList(list: ListItemModel[]) {
+    return this.items.set(list).catch(error => console.error(error)); // TODO: improve...
   }
 }

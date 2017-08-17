@@ -1,4 +1,9 @@
 export const environment = {
   production: true,
-  backendUrl: '' // Provide here your firebase url
+  firebase: {
+    apiKey: 'AIzaSyD9yW8ThUHBFpZP30eAezhyeJoZ2dJglQE',
+    authDomain: 'angular-todo-b278a.firebaseapp.com',
+    databaseURL: 'https://angular-todo-b278a.firebaseio.com',
+    projectId: 'angular-todo-b278a'
+  }
 };

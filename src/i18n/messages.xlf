@@ -74,11 +74,20 @@
         <note priority="1" from="description">Tab</note>
         <note priority="1" from="meaning">Done</note>
       </trans-unit>
+      <trans-unit id="FetchingData" datatype="html">
+        <source>Fetching data...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/todo/todo.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Loader</note>
+        <note priority="1" from="meaning">Fetching data</note>
+      </trans-unit>
       <trans-unit id="Remains" datatype="html">
         <source>Remains:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/todo/todo.component.ts</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">22</context>
         </context-group>
         <note priority="1" from="description">Description</note>
         <note priority="1" from="meaning">Remains</note>

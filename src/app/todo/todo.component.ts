@@ -15,18 +15,14 @@ export class TodoComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   tabId = 'all';
   filtered: string;
+  isLoading = true;
 
   constructor(private listService: ListService,
               private router: Router,
               private route: ActivatedRoute) {
-  }
-
-  onFetch() {
-    this.listService.fetchList();
-  }
-
-  onSave() {
-    this.listService.saveList().subscribe(response => console.log('onSave', response));
+    this.listService.getList().subscribe(
+      () => this.isLoading = false
+    );
   }
 
   ngOnInit() {

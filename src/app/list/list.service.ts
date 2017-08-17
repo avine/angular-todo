@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { FirebaseObjectObservable } from 'angularfire2/database';
 
 import { ListItemModel } from './listItem.model';
 import { BackendService } from './backend.service';
@@ -7,21 +8,28 @@ import { BackendService } from './backend.service';
 @Injectable()
 export class ListService {
   list: ListItemModel[];
-  changed = new Subject<void>();
+  changed = new Subject<string | void>();
 
   constructor(private backend: BackendService) {
     this.list = [];
-  }
-
-  fetchList() {
-    return this.backend.fetchList().subscribe(response => {
-      this.list = response;
-      this.changed.next();
+    this.changed.subscribe(action => {
+      if (action !== 'getList') {
+        this.setList();
+      }
     });
   }
 
-  saveList() {
-    return this.backend.saveList(this.list);
+  getList() {
+    const list: FirebaseObjectObservable<any[]> = this.backend.getList();
+    list.subscribe(response => {
+      this.list = response;
+      this.changed.next('getList');
+    });
+    return list;
+  }
+
+  setList() {
+    return this.backend.setList(this.list);
   }
 
   get(archived = false, status = 'all') {
@@ -40,14 +48,14 @@ export class ListService {
 
   create(title) {
     this.list.push(new ListItemModel(title));
-    this.changed.next();
+    this.changed.next('create');
   }
 
   done(id: number, status: boolean = true) {
     this.list.forEach(item => {
       if (item.id === id) {
         item.done = status;
-        this.changed.next();
+        this.changed.next('done');
       }
     });
   }
@@ -56,7 +64,7 @@ export class ListService {
     this.list.forEach(item => {
       if (item.id === id) {
         item.title = title;
-        this.changed.next();
+        this.changed.next('rename');
       }
     });
   }
@@ -65,7 +73,7 @@ export class ListService {
     this.list.forEach(item => {
       if (item.id === id && item.archived !== archived) {
         item.archived = archived;
-        this.changed.next();
+        this.changed.next('archive');
       }
     });
   }
@@ -76,7 +84,7 @@ export class ListService {
       return item.id !== id;
     });
     if (this.list.length !== length) {
-      this.changed.next();
+      this.changed.next('delete');
     }
   }
 }

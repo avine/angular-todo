@@ -34,6 +34,10 @@
         <source>Done</source>
         <target>Fait</target>
       </trans-unit>
+      <trans-unit id="FetchingData" datatype="html">
+        <source>Fetching data...</source>
+        <target>Chargement des données...</target>
+      </trans-unit>
       <trans-unit id="Remains" datatype="html">
         <source>Remains:</source>
         <target>Reste à faire :</target>
