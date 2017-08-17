@@ -47,8 +47,12 @@ export class ListService {
   }
 
   create(title) {
+    if (this.filterBy({ title, archived: false }).length) {
+      return false;
+    }
     this.list.push(new ListItemModel(title));
     this.changed.next('create');
+    return true;
   }
 
   done(id: number, status: boolean = true) {
@@ -86,5 +90,16 @@ export class ListService {
     if (this.list.length !== length) {
       this.changed.next('delete');
     }
+  }
+
+  filterBy(map: {}) {
+    return this.list.filter(item => {
+      for (const prop in map) {
+        if (item[prop] !== map[prop]) {
+          return false;
+        }
+      }
+      return true;
+    });
   }
 }

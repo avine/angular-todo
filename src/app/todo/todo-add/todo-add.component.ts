@@ -43,8 +43,11 @@ export class TodoAddComponent implements OnInit, AfterViewInit, AfterViewChecked
 
   onCreate() {
     if (this.role === 'add' && this.title) {
-      this.listService.create(this.title);
-      this.title = '';
+      if (this.listService.create(this.title)) {
+        this.title = '';
+      } else {
+        console.log('Duplicate title...'); // TODO: improve this...
+      }
     }
   }
 
