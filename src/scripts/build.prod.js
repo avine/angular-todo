@@ -19,6 +19,9 @@ const langs = argv['langs'] ? argv['langs'].split(',') : [];
 // (option: --dl) Default language to use in apache config when redirecting bad url
 const defaultLang = langs.length ? (argv['dl'] || langs[0]) : null;
 
+// (option: --htaccess) Add .htaccess in the dist/ folder ?
+let useHtaccess = argv['htaccess'] === undefined || argv['htaccess'] === true;
+
 // Execute build command according to "<lang>" and "messages.<lang>.xlf" availibility
 const execBuildCmd = (lang, hasXlf) => {
   let cmd;
@@ -52,21 +55,24 @@ if (!langs.length) {
     'dist/index.html'
   ].join('\n'));
 
-  let htaccess = fs.readFileSync('src/apache/.htaccess', 'utf8');
-  htaccess =
-    htaccess
-      .replace(/<BASE_HREF>/g, bh)
-      .replace(/<DEFAULT_LANG>/g, defaultLang)
-      .replace(/<LANGS>/g, `(${langs.join('|')})`);
-
   let index = fs.readFileSync('src/apache/index.html', 'utf8');
   index =
     index
       .replace(/<BASE_HREF>/g, bh)
       .replace(/<DEFAULT_LANG>/g, defaultLang);
 
-  fs.writeFileSync('dist/.htaccess', htaccess, 'utf8');
   fs.writeFileSync('dist/index.html', index, 'utf8');
+
+  if (useHtaccess) {
+    let htaccess = fs.readFileSync('src/apache/.htaccess', 'utf8');
+    htaccess =
+      htaccess
+        .replace(/<BASE_HREF>/g, bh)
+        .replace(/<DEFAULT_LANG>/g, defaultLang)
+        .replace(/<LANGS>/g, `(${langs.join('|')})`);
+
+    fs.writeFileSync('dist/.htaccess', htaccess, 'utf8');
+  }
 }
 
 console.log();
