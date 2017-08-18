@@ -5,10 +5,12 @@
 
 export const environment = {
   production: false,
+
+  // Initialize Firebase
+  // TODO: Replace with your project's customized code snippet
   firebase: {
-    apiKey: 'AIzaSyD9yW8ThUHBFpZP30eAezhyeJoZ2dJglQE',
-    authDomain: 'angular-todo-b278a.firebaseapp.com',
-    databaseURL: 'https://angular-todo-b278a.firebaseio.com',
-    projectId: 'angular-todo-b278a'
+    apiKey: '<API_KEY>',
+    authDomain: '<PROJECT_ID>.firebaseapp.com',
+    databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
   }
 };
