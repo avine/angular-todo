@@ -8,7 +8,11 @@ export class ListItemModel {
     return new ListItemModel(o.title, o.done, o.archived, o.id);
   }
 
-  constructor(title: string, done = false, archived = false, id: number = new Date().getTime()) {
+  static getId() {
+    return new Date().getTime();
+  }
+
+  constructor(title: string, done = false, archived = false, id: number = ListItemModel.getId()) {
     this.title = title;
     this.done = done;
     this.archived = archived;

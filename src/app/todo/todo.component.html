@@ -11,7 +11,7 @@
 </div>
 
 <app-todo-item
-  *ngFor="let item of list | filter:filtered:'title'"
+  *ngFor="let item of list | filter:filtered:'title' | sort:'id'"
   [item]="item"
   (statusChanged)="onStatusChanged(item.id, $event)">
 </app-todo-item>

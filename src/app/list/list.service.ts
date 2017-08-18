@@ -22,7 +22,7 @@ export class ListService {
   getList() {
     const list: FirebaseObjectObservable<any[]> = this.backend.getList();
     list.subscribe(response => {
-      this.list = response;
+      this.list = response.length ? [].concat(response) : [];
       this.changed.next('getList');
     });
     return list;
@@ -47,8 +47,13 @@ export class ListService {
   }
 
   create(title) {
-    if (this.filterBy({ title, archived: false }).length) {
-      return false;
+    const match = this.filterBy({ title });
+    if (match.length) {
+      if (!match[0].archived) {
+        return false;
+      }
+      this.archive(match[0].id, false);
+      return true;
     }
     this.list.push(new ListItemModel(title));
     this.changed.next('create');
@@ -77,6 +82,9 @@ export class ListService {
     this.list.forEach(item => {
       if (item.id === id && item.archived !== archived) {
         item.archived = archived;
+        if (!archived) {
+          item.id = ListItemModel.getId();
+        }
         this.changed.next('archive');
       }
     });

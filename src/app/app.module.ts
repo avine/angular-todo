@@ -22,6 +22,7 @@ import { TodoItemComponent } from './todo/todo-item/todo-item.component';
 import { ArchiveComponent } from './archive/archive.component';
 
 import { FilterPipe } from './filter.pipe';
+import { SortPipe } from './sort.pipe';
 
 const routes = [
   { path: 'todo/:tabId', component: TodoComponent }, // TODO: check the list of expected routes 'all', 'left', 'done'
@@ -38,7 +39,8 @@ const routes = [
     TodoAddComponent,
     TodoItemComponent,
     ArchiveComponent,
-    FilterPipe
+    FilterPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,
