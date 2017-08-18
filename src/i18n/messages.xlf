@@ -78,16 +78,29 @@
         <source>Fetching data...</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/todo/todo.component.ts</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/archive/archive.component.ts</context>
+          <context context-type="linenumber">2</context>
         </context-group>
         <note priority="1" from="description">Loader</note>
         <note priority="1" from="meaning">Fetching data</note>
+      </trans-unit>
+      <trans-unit id="NothingToDo" datatype="html">
+        <source>Nothing to do</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/todo/todo.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="description">Info</note>
+        <note priority="1" from="meaning">Nothing to do</note>
       </trans-unit>
       <trans-unit id="Remains" datatype="html">
         <source>Remains:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/todo/todo.component.ts</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">32</context>
         </context-group>
         <note priority="1" from="description">Description</note>
         <note priority="1" from="meaning">Remains</note>
@@ -137,11 +150,20 @@
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">Archive</note>
       </trans-unit>
+      <trans-unit id="NoArchive" datatype="html">
+        <source>No Archive</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/archive/archive.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">Info</note>
+        <note priority="1" from="meaning">No Archive</note>
+      </trans-unit>
       <trans-unit id="Unarchive" datatype="html">
         <source>Unarchive</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/archive/archive.component.ts</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">14</context>
         </context-group>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">Unarchive</note>
@@ -150,19 +172,10 @@
         <source>Delete</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/archive/archive.component.ts</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">15</context>
         </context-group>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">Delete</note>
-      </trans-unit>
-      <trans-unit id="NoArchive" datatype="html">
-        <source>No Archive</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/archive/archive.component.ts</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-        <note priority="1" from="description">Info</note>
-        <note priority="1" from="meaning">No Archive</note>
       </trans-unit>
     </body>
   </file>

@@ -12,9 +12,12 @@ import { ListItemModel} from '../list/listItem.model';
 export class ArchiveComponent implements OnInit, OnDestroy {
   list: ListItemModel[];
   subscription: Subscription;
+  isLoading = true;
 
   constructor(private listService: ListService) {
-    this.listService = listService;
+    this.listService.getList().subscribe(
+      () => this.isLoading = false
+    );
   }
 
   ngOnInit() {

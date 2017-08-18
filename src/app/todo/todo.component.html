@@ -6,7 +6,17 @@
 
 <div class="row p-2" *ngIf="isLoading">
   <div class="col">
-      <p class="text-center"><small i18n="Fetching data|Loader@@FetchingData">Fetching data...</small></p>
+      <p class="text-center">
+        <small i18n="Fetching data|Loader@@FetchingData">Fetching data...</small>
+      </p>
+  </div>
+</div>
+
+<div class="row p-2" *ngIf="!isLoading && !list.length">
+  <div class="col">
+      <p class="text-center">
+        <small i18n="Nothing to do|Info@@NothingToDo">Nothing to do</small>
+      </p>
   </div>
 </div>
 

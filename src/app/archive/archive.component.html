@@ -1,3 +1,11 @@
+<p class="text-center" *ngIf="isLoading">
+  <small i18n="Fetching data|Loader@@FetchingData">Fetching data...</small>
+</p>
+
+<p class="text-center" *ngIf="!isLoading && !list.length">
+  <small i18n="No Archive|Info@@NoArchive">No Archive</small>
+</p>
+
 <div class="row p-2" *ngFor="let item of list">
   <div class="col" [ngClass]="{'todo-done': item.done}">
     {{ item.title }}
@@ -7,7 +15,3 @@
     <button class="btn btn-outline-danger btn-sm" (click)="onAction('delete', item)" i18n="Delete|Button@@Delete">Delete</button>
   </div>
 </div>
-
-<p class="text-center" *ngIf="!list.length">
-  <small i18n="No Archive|Info@@NoArchive">No Archive</small>
-</p>

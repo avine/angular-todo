@@ -38,6 +38,10 @@
         <source>Fetching data...</source>
         <target>Chargement des données...</target>
       </trans-unit>
+      <trans-unit id="NothingToDo" datatype="html">
+        <source>Nothing to do</source>
+        <target>Rien à faire</target>
+      </trans-unit>
       <trans-unit id="Remains" datatype="html">
         <source>Remains:</source>
         <target>Reste à faire :</target>
@@ -62,6 +66,10 @@
         <source>Archive</source>
         <target>Archiver</target>
       </trans-unit>
+      <trans-unit id="NoArchive" datatype="html">
+        <source>No Archive</source>
+        <target>Aucune archive</target>
+      </trans-unit>
       <trans-unit id="Unarchive" datatype="html">
         <source>Unarchive</source>
         <target>Restaurer</target>
@@ -69,10 +77,6 @@
       <trans-unit id="Delete" datatype="html">
         <source>Delete</source>
         <target>Effacer</target>
-      </trans-unit>
-      <trans-unit id="NoArchive" datatype="html">
-        <source>No Archive</source>
-        <target>Aucune archive</target>
       </trans-unit>
     </body>
   </file>
