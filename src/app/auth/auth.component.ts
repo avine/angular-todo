@@ -12,9 +12,15 @@ export class AuthComponent implements OnInit {
   user: firebase.User | null;
   action = '';
   isNewUser = false;
+  isFormDisabled = false;
   error: { code: string, message: string };
 
   constructor(public authService: AuthService) {
+    if (this.authService.initialized) {
+      const currentUser = this.authService.currentUser();
+      this.user = currentUser || null;
+      this.action = this.user ? 'logout' : 'login';
+    }
     this.authService.user.subscribe(user => {
       this.user = user || null;
       this.action = this.user ? 'logout' : 'login';
@@ -36,20 +42,24 @@ export class AuthComponent implements OnInit {
   }
 
   signUp(email: string, password: string) {
-    this.authService.signUp(email, password).catch(error => {
-      this.showError(error);
-    });
+    this.handleAction(this.authService.signUp(email, password));
   }
 
   signIn(email: string, password: string) {
-    this.authService.signIn(email, password).catch(error => {
-      this.showError(error);
-    });
+    this.handleAction(this.authService.signIn(email, password));
   }
 
   onSignOut() {
     this.hideError();
-    this.authService.signOut().catch(error => {
+    this.handleAction(this.authService.signOut());
+  }
+
+  handleAction(promise: firebase.Promise<any>) {
+    this.isFormDisabled = true;
+    promise.then(
+      () => this.isFormDisabled = false
+    ).catch(error => {
+      this.isFormDisabled = false;
       this.showError(error);
     });
   }

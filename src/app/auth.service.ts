@@ -6,9 +6,11 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class AuthService {
   user = new Subject<firebase.User | void>();
+  initialized = false;
 
   constructor(private afAuth: AngularFireAuth) {
     this.afAuth.auth.onAuthStateChanged(user => {
+      this.initialized = true;
       this.user.next(user);
     });
   }

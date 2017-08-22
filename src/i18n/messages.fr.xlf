@@ -2,6 +2,34 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="SignIn" datatype="html">
+        <source>Sign in</source>
+        <target>S'identifier</target>
+      </trans-unit>
+      <trans-unit id="SignUp" datatype="html">
+        <source>Sign up</source>
+        <target>Créer un compte</target>
+      </trans-unit>
+      <trans-unit id="NewUser" datatype="html">
+        <source>New user ?</source>
+        <target>Nouvel utilisateur ?</target>
+      </trans-unit>
+      <trans-unit id="Email" datatype="html">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="Password" datatype="html">
+        <source>Password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="Submit" datatype="html">
+        <source>Submit</source>
+        <target>Valider</target>
+      </trans-unit>
+      <trans-unit id="SignOut" datatype="html">
+        <source>Sign out</source>
+        <target>Se déconnecter</target>
+      </trans-unit>
       <trans-unit id="TodoBrand" datatype="html">
         <source>Todo</source>
         <target>A faire</target>
@@ -13,6 +41,10 @@
       <trans-unit id="Archive" datatype="html">
         <source>Archive</source>
         <target>Archive</target>
+      </trans-unit>
+      <trans-unit id="Account" datatype="html">
+        <source>Account</source>
+        <target>Compte</target>
       </trans-unit>
       <trans-unit id="ViewOnGithub" datatype="html">
         <source>View on Github</source>

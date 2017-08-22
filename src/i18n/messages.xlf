@@ -2,6 +2,73 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="SignIn" datatype="html">
+        <source>Sign in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">Sign in</note>
+      </trans-unit>
+      <trans-unit id="SignUp" datatype="html">
+        <source>Sign up</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">Sign up</note>
+      </trans-unit>
+      <trans-unit id="NewUser" datatype="html">
+        <source>New user ?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description">Label</note>
+        <note priority="1" from="meaning">New user ?</note>
+      </trans-unit>
+      <trans-unit id="Email" datatype="html">
+        <source>Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description">Placeholder</note>
+        <note priority="1" from="meaning">Email</note>
+      </trans-unit>
+      <trans-unit id="Password" datatype="html">
+        <source>Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <note priority="1" from="description">Placeholder</note>
+        <note priority="1" from="meaning">Password</note>
+      </trans-unit>
+      <trans-unit id="Submit" datatype="html">
+        <source>Submit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <note priority="1" from="description">Button</note>
+        <note priority="1" from="meaning">Submit</note>
+      </trans-unit>
+      <trans-unit id="SignOut" datatype="html">
+        <source>Sign out</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">Sign out</note>
+      </trans-unit>
       <trans-unit id="TodoBrand" datatype="html">
         <source>Todo</source>
         <context-group purpose="location">
@@ -29,11 +96,20 @@
         <note priority="1" from="description">Menu</note>
         <note priority="1" from="meaning">Archive</note>
       </trans-unit>
+      <trans-unit id="Account" datatype="html">
+        <source>Account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/header/header.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <note priority="1" from="description">Menu</note>
+        <note priority="1" from="meaning">Account</note>
+      </trans-unit>
       <trans-unit id="ViewOnGithub" datatype="html">
         <source>View on Github</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/header/header.component.ts</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">25</context>
         </context-group>
         <note priority="1" from="description">Menu</note>
         <note priority="1" from="meaning">View on Github</note>
@@ -42,7 +118,7 @@
         <source>Languages</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/header/header.component.ts</context>
-          <context context-type="linenumber">30</context>
+          <context context-type="linenumber">33</context>
         </context-group>
         <note priority="1" from="description">Menu</note>
         <note priority="1" from="meaning">Languages</note>
