@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 
-import { ListItemModel } from './listItem.model';
+import { ListItemModel } from './list/listItem.model';
 
 @Injectable()
-export class BackendService {
+export class DatabaseService {
   items: FirebaseObjectObservable<any[]>;
 
-  constructor(private db: AngularFireDatabase) {
-    this.items = this.db.object('/list');
+  constructor(private afDatabase: AngularFireDatabase) {
+    this.items = this.afDatabase.object('/list');
   }
 
   getList() {

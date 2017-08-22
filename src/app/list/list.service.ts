@@ -3,14 +3,14 @@ import { Subject } from 'rxjs/Subject';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 
 import { ListItemModel } from './listItem.model';
-import { BackendService } from './backend.service';
+import { DatabaseService } from '../database.service';
 
 @Injectable()
 export class ListService {
   list: ListItemModel[];
   changed = new Subject<string | void>();
 
-  constructor(private backend: BackendService) {
+  constructor(private databaseService: DatabaseService) {
     this.list = [];
     this.changed.subscribe(action => {
       if (action !== 'getList') {
@@ -20,7 +20,7 @@ export class ListService {
   }
 
   getList() {
-    const list: FirebaseObjectObservable<any[]> = this.backend.getList();
+    const list: FirebaseObjectObservable<any[]> = this.databaseService.getList();
     list.subscribe(response => {
       this.list = response.length ? [].concat(response) : [];
       this.changed.next('getList');
@@ -29,7 +29,7 @@ export class ListService {
   }
 
   setList() {
-    return this.backend.setList(this.list);
+    return this.databaseService.setList(this.list);
   }
 
   get(archived = false, status = 'all') {

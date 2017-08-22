@@ -10,7 +10,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
 import { AuthService } from './auth.service';
-import { BackendService } from './list/backend.service';
+import { DatabaseService } from './database.service';
 import { ListService } from './list/list.service'; // TODO: rename into something else...
 
 import { AppComponent } from './app.component';
@@ -57,7 +57,7 @@ const routes = [
   providers: [
     Title,
     AuthService,
-    BackendService,
+    DatabaseService,
     ListService
   ],
   bootstrap: [AppComponent]
