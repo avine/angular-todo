@@ -1,0 +1,62 @@
+<ng-container *ngIf="action === 'login'">
+  <div class="row justify-content-center mb-3">
+    <div class="col col-md-3">
+
+      <h1 *ngIf="!isNewUser">Sign in</h1>
+      <h1 *ngIf="isNewUser">Sign up</h1>
+
+    </div>
+    <div class="col col-md-3 text-right">
+
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" name="newUser" [(ngModel)]="isNewUser" />
+          New user ?
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col col-md-6">
+
+      <form #f="ngForm" (ngSubmit)="onSign(f)">
+        <div class="form-group">
+          <input ngModel name="email" type="text" class="form-control" placeholder="Email" />
+        </div>
+        <div class="form-group">
+          <input ngModel name="password" type="password" class="form-control" placeholder="Password" />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-block btn-primary">Submit</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</ng-container>
+
+<div *ngIf="action === 'logout'" class="row justify-content-center">
+  <div class="col col-md-6">
+
+    <h1>Sign out</h1>
+
+    <button class="btn btn-block btn-danger" (click)="onSignOut()">Submit</button>
+    <!--{{ (authService.user | async)?.uid }}-->
+
+  </div>
+</div>
+
+<div class="row justify-content-center" *ngIf="error">
+  <div class="col col-md-6">
+
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="hideError()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {{ error.message }}
+    </div>
+
+  </div>
+</div>

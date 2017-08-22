@@ -3,17 +3,18 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
-
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { environment } from '../environments/environment';
 
-import { ListService } from './list/list.service'; // TODO: rename into something else...
+import { AuthService } from './auth.service';
 import { BackendService } from './list/backend.service';
+import { ListService } from './list/list.service'; // TODO: rename into something else...
 
 import { AppComponent } from './app.component';
+import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { TodoComponent } from './todo/todo.component'; // TODO: rename into ListComponent
@@ -25,6 +26,7 @@ import { FilterPipe } from './filter.pipe';
 import { SortPipe } from './sort.pipe';
 
 const routes = [
+  { path: 'auth', component: AuthComponent },
   { path: 'todo/:tabId', component: TodoComponent }, // TODO: check the list of expected routes 'all', 'left', 'done'
   { path: 'archive', component: ArchiveComponent },
   { path: '**', redirectTo: '/todo/all' }
@@ -33,6 +35,7 @@ const routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    AuthComponent,
     HeaderComponent,
     TabsComponent,
     TodoComponent,
@@ -53,8 +56,9 @@ const routes = [
   ],
   providers: [
     Title,
-    ListService,
-    BackendService
+    AuthService,
+    BackendService,
+    ListService
   ],
   bootstrap: [AppComponent]
 })
