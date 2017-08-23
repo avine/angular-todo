@@ -12,10 +12,10 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/todo" routerLinkActive="active" i18n="List|Menu@@List">List</a>
+      <li class="nav-item" *ngIf="(authService.user | async)">
+        <a class="nav-link" routerLink="/todo/all" routerLinkActive="active" i18n="List|Menu@@List">List</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="(authService.user | async)">
         <a class="nav-link" routerLink="/archive" routerLinkActive="active" i18n="Archive|Menu@@Archive">Archive</a>
       </li>
       <li class="nav-item">

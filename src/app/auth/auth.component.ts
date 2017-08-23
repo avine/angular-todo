@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 
 import { AuthService } from '../auth.service';
@@ -14,7 +15,7 @@ export class AuthComponent implements OnInit {
   isFormDisabled = false;
   error: { code: string, message: string };
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService, private router: Router) {
     this.authService.user.subscribe(user => {
       this.action = user ? 'logout' : 'login';
     });
@@ -35,11 +36,15 @@ export class AuthComponent implements OnInit {
   }
 
   signUp(email: string, password: string) {
-    this.handleAction(this.authService.signUp(email, password));
+    this.handleAction(this.authService.signUp(email, password).then(
+      () => this.router.navigate(['/todo/all'])
+    ));
   }
 
   signIn(email: string, password: string) {
-    this.handleAction(this.authService.signIn(email, password));
+    this.handleAction(this.authService.signIn(email, password).then(
+      () => this.router.navigate(['/todo/all'])
+    ));
   }
 
   onSignOut() {

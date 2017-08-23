@@ -10,6 +10,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
 import { AuthService } from './auth.service';
+import { AuthGuardService } from './auth-guard.service';
 import { DatabaseService } from './database.service';
 import { ListService } from './list/list.service'; // TODO: rename into something else...
 
@@ -27,8 +28,8 @@ import { SortPipe } from './sort.pipe';
 
 const routes = [
   { path: 'auth', component: AuthComponent },
-  { path: 'todo/:tabId', component: TodoComponent }, // TODO: check the list of expected routes 'all', 'left', 'done'
-  { path: 'archive', component: ArchiveComponent },
+  { path: 'todo/:tabId', component: TodoComponent, canActivate: [AuthGuardService] },
+  { path: 'archive', component: ArchiveComponent, canActivate: [AuthGuardService] },
   { path: '**', redirectTo: '/todo/all' }
 ];
 
@@ -57,6 +58,7 @@ const routes = [
   providers: [
     Title,
     AuthService,
+    AuthGuardService,
     DatabaseService,
     ListService
   ],
