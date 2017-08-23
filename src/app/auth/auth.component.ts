@@ -9,21 +9,14 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  user: firebase.User | null;
   action = '';
   isNewUser = false;
   isFormDisabled = false;
   error: { code: string, message: string };
 
   constructor(public authService: AuthService) {
-    if (this.authService.initialized) {
-      const currentUser = this.authService.currentUser();
-      this.user = currentUser || null;
-      this.action = this.user ? 'logout' : 'login';
-    }
     this.authService.user.subscribe(user => {
-      this.user = user || null;
-      this.action = this.user ? 'logout' : 'login';
+      this.action = user ? 'logout' : 'login';
     });
   }
 

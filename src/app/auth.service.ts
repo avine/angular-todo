@@ -1,22 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthService {
-  user = new Subject<firebase.User | void>();
-  initialized = false;
+  user = new ReplaySubject<firebase.User | null>(1);
 
   constructor(private afAuth: AngularFireAuth) {
-    this.afAuth.auth.onAuthStateChanged(user => {
-      this.initialized = true;
-      this.user.next(user);
-    });
-  }
-
-  currentUser() {
-    return this.afAuth.auth.currentUser;
+    this.afAuth.auth.onAuthStateChanged(user => this.user.next(user));
   }
 
   signUp(email: string, password: string) {
