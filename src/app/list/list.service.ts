@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 
 import { ListItemModel } from './listItem.model';
@@ -7,7 +8,7 @@ import { DatabaseService } from '../database.service';
 
 @Injectable()
 export class ListService {
-  list: ListItemModel[];
+  list: ListItemModel[]; // TODO: remove this varilable and simply use the last emitted value in ReplaySubject
   changed = new Subject<string | void>();
 
   constructor(private databaseService: DatabaseService) {
@@ -20,7 +21,7 @@ export class ListService {
   }
 
   getList() {
-    const list: FirebaseObjectObservable<any[]> = this.databaseService.getList();
+    const list: ReplaySubject<any> = this.databaseService.getList();
     list.subscribe(response => {
       this.list = response.length ? [].concat(response) : [];
       this.changed.next('getList');
