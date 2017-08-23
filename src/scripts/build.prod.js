@@ -20,7 +20,7 @@ const langs = argv['langs'] ? argv['langs'].split(',') : [];
 const defaultLang = langs.length ? (argv['dl'] || langs[0]) : null;
 
 // (option: --htaccess) Add .htaccess in the dist/ folder ?
-let useHtaccess = argv['htaccess'] === undefined || argv['htaccess'] === true;
+let useHtaccess = argv['htaccess'] === true || argv['htaccess'] === 'true';
 
 // Execute build command according to "<lang>" and "messages.<lang>.xlf" availibility
 const execBuildCmd = (lang, hasXlf) => {
@@ -49,11 +49,7 @@ if (!langs.length) {
   langs.forEach((lang, index) => execBuildCmd(lang, index !== 0));
 
   // Build apache config
-  console.log(chalk.green(`\nConfiguring apache (using default language: "${defaultLang}"):`));
-  console.log([
-    'dist/.htaccess',
-    'dist/index.html'
-  ].join('\n'));
+  console.log(chalk.green(`\nConfiguring root (using default language: "${defaultLang}"):`));
 
   let index = fs.readFileSync('src/apache/index.html', 'utf8');
   index =
@@ -62,6 +58,7 @@ if (!langs.length) {
       .replace(/<DEFAULT_LANG>/g, defaultLang);
 
   fs.writeFileSync('dist/index.html', index, 'utf8');
+  console.log('dist/index.html');
 
   if (useHtaccess) {
     let htaccess = fs.readFileSync('src/apache/.htaccess', 'utf8');
@@ -72,6 +69,7 @@ if (!langs.length) {
         .replace(/<LANGS>/g, `(${langs.join('|')})`);
 
     fs.writeFileSync('dist/.htaccess', htaccess, 'utf8');
+    console.log('dist/.htaccess');
   }
 }
 
