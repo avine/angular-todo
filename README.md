@@ -1,12 +1,10 @@
 # angular-todo
 Manage your todo list with Angular 4, Bootstrap 4 and Firebase 4.
 
-Sign in page
-
+#### Sign in page:
 <img src="./screenshot-1.png" width="440" />
 
-Main page
-
+#### Main page:
 <img src="./screenshot-2.png" width="440" />
 
 ## Configuration
