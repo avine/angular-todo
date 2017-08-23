@@ -1,7 +1,8 @@
 # angular-todo
 Manage your todo list with Angular 4, Bootstrap 4 and Firebase 4.
 
-<img src="./screenshot.png" width="530" />
+<img src="./screenshot-1.png" width="440" />
+<img src="./screenshot-2.png" width="440" />
 
 ## Configuration
 
