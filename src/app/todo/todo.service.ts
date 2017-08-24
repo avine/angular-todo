@@ -3,12 +3,12 @@ import { Subject } from 'rxjs/Subject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 
-import { ListItemModel } from './listItem.model';
-import { DatabaseService } from '../database.service';
+import { TodoModel } from './todo.model';
+import { DatabaseService } from '../data/database.service';
 
 @Injectable()
-export class ListService {
-  list: ListItemModel[]; // TODO: remove this varilable and simply use the last emitted value in ReplaySubject
+export class TodoService {
+  list: TodoModel[]; // TODO: remove this varilable and simply use the last emitted value in ReplaySubject
   changed = new Subject<string | void>();
 
   constructor(private databaseService: DatabaseService) {
@@ -56,7 +56,7 @@ export class ListService {
       this.archive(match[0].id, false);
       return true;
     }
-    this.list.push(new ListItemModel(title));
+    this.list.push(new TodoModel(title));
     this.changed.next('create');
     return true;
   }
@@ -84,7 +84,7 @@ export class ListService {
       if (item.id === id && item.archived !== archived) {
         item.archived = archived;
         if (!archived) {
-          item.id = ListItemModel.getId();
+          item.id = TodoModel.getId();
         }
         this.changed.next('archive');
       }

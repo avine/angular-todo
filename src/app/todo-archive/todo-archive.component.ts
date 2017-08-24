@@ -1,20 +1,20 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
-import { ListService } from '../list/list.service';
-import { ListItemModel} from '../list/listItem.model';
+import { TodoService } from '../todo/todo.service';
+import { TodoModel } from '../todo/todo.model';
 
 @Component({
-  selector: 'app-archive',
-  templateUrl: './archive.component.html',
-  styleUrls: ['./archive.component.css']
+  selector: 'app-todo-archive',
+  templateUrl: './todo-archive.component.html',
+  styleUrls: ['./todo-archive.component.css']
 })
-export class ArchiveComponent implements OnInit, OnDestroy {
-  list: ListItemModel[];
+export class TodoArchiveComponent implements OnInit, OnDestroy {
+  list: TodoModel[];
   subscription: Subscription;
   isLoading = true;
 
-  constructor(private listService: ListService) {
+  constructor(private listService: TodoService) {
     this.listService.getList().subscribe(
       () => this.isLoading = false
     );
@@ -31,7 +31,7 @@ export class ArchiveComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onAction(type: string, item: ListItemModel) {
+  onAction(type: string, item: TodoModel) {
     switch (type) {
       case 'unarchive':
         this.listService.archive(item.id, false);

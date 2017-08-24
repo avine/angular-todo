@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { ListItemModel } from '../../list/listItem.model';
+import { TodoModel } from '../../todo/todo.model';
 
 @Component({
   selector: 'app-todo-item',
@@ -8,7 +8,7 @@ import { ListItemModel } from '../../list/listItem.model';
   styleUrls: ['./todo-item.component.css']
 })
 export class TodoItemComponent implements OnInit {
-  @Input() item: ListItemModel;
+  @Input() item: TodoModel;
   @Output() statusChanged: EventEmitter<any> = new EventEmitter();
   isEdited = false;
 

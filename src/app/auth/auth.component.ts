@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 
-import { AuthService } from '../auth.service';
+import { AuthService } from '../data/auth.service';
 
 @Component({
   selector: 'app-auth',

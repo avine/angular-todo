@@ -2,22 +2,22 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { ListService } from '../list/list.service';
-import { ListItemModel } from '../list/listItem.model';
+import { TodoService } from '../todo/todo.service';
+import { TodoModel } from '../todo/todo.model';
 
 @Component({
-  selector: 'app-todo',
-  templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.css']
+  selector: 'app-todo-list',
+  templateUrl: './todo-list.component.html',
+  styleUrls: ['./todo-list.component.css']
 })
-export class TodoComponent implements OnInit, OnDestroy {
-  list: ListItemModel[];
+export class TodoListComponent implements OnInit, OnDestroy {
+  list: TodoModel[];
   subscription: Subscription;
   tabId = 'all';
   filtered: string;
   isLoading = true;
 
-  constructor(private listService: ListService,
+  constructor(private listService: TodoService,
               private router: Router,
               private route: ActivatedRoute) {
     this.listService.getList().subscribe(

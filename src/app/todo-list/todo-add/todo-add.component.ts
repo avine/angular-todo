@@ -8,8 +8,8 @@ import {
   ViewChild
 } from '@angular/core';
 
-import { ListService } from '../../list/list.service';
-import { ListItemModel } from '../../list/listItem.model';
+import { TodoService } from '../../todo/todo.service';
+import { TodoModel } from '../../todo/todo.model';
 
 @Component({
   selector: 'app-todo-add',
@@ -25,7 +25,7 @@ export class TodoAddComponent implements OnInit, AfterViewInit, AfterViewChecked
   @ViewChild('filterInput') filterInput;
   @Output() filtered: EventEmitter<any> = new EventEmitter();
 
-  constructor(private listService: ListService) { }
+  constructor(private listService: TodoService) { }
 
   ngOnInit() {
   }

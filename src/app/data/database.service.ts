@@ -3,7 +3,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 
 import { AuthService } from './auth.service';
-import { ListItemModel } from './list/listItem.model';
+import { TodoModel } from '../todo/todo.model';
 
 @Injectable()
 export class DatabaseService {
@@ -26,7 +26,7 @@ export class DatabaseService {
     return this.list;
   }
 
-  setList(list: ListItemModel[]) {
+  setList(list: TodoModel[]) {
     return this.ref.set(list).catch(error => console.error(error)); // TODO: improve...
   }
 }
