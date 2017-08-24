@@ -8,8 +8,8 @@ import { DatabaseService } from '../data/database.service';
 
 @Injectable()
 export class TodoService {
-  list: TodoModel[]; // TODO: remove this varilable and simply use the last emitted value in ReplaySubject
-  changed = new Subject<string | void>();
+  private list: TodoModel[]; // TODO: remove this varilable and simply use the last emitted value in ReplaySubject
+  public changed = new Subject<string | void>(); // TODO: remove this varilable and simply use the last emitted value in ReplaySubject
 
   constructor(private databaseService: DatabaseService) {
     this.list = [];

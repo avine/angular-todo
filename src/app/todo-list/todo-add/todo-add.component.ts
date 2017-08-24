@@ -25,7 +25,7 @@ export class TodoAddComponent implements OnInit, AfterViewInit, AfterViewChecked
   @ViewChild('filterInput') filterInput;
   @Output() filtered: EventEmitter<any> = new EventEmitter();
 
-  constructor(private listService: TodoService) { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
   }
@@ -43,7 +43,7 @@ export class TodoAddComponent implements OnInit, AfterViewInit, AfterViewChecked
 
   onCreate() {
     if (this.role === 'add' && this.title) {
-      if (this.listService.create(this.title)) {
+      if (this.todoService.create(this.title)) {
         this.title = '';
       } else {
         console.log('Duplicate title...'); // TODO: improve this...

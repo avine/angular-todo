@@ -14,16 +14,16 @@ export class TodoArchiveComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   isLoading = true;
 
-  constructor(private listService: TodoService) {
-    this.listService.getList().subscribe(
+  constructor(private todoService: TodoService) {
+    this.todoService.getList().subscribe(
       () => this.isLoading = false
     );
   }
 
   ngOnInit() {
-    this.list = this.listService.get(true);
-    this.subscription = this.listService.changed.subscribe(() => {
-      this.list = this.listService.get(true);
+    this.list = this.todoService.get(true);
+    this.subscription = this.todoService.changed.subscribe(() => {
+      this.list = this.todoService.get(true);
     });
   }
 
@@ -34,11 +34,11 @@ export class TodoArchiveComponent implements OnInit, OnDestroy {
   onAction(type: string, item: TodoModel) {
     switch (type) {
       case 'unarchive':
-        this.listService.archive(item.id, false);
+        this.todoService.archive(item.id, false);
         break;
 
       case 'delete':
-        this.listService.delete(item.id);
+        this.todoService.delete(item.id);
         break;
     }
   }

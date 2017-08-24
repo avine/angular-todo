@@ -17,17 +17,17 @@ export class TodoListComponent implements OnInit, OnDestroy {
   filtered: string;
   isLoading = true;
 
-  constructor(private listService: TodoService,
+  constructor(private todoService: TodoService,
               private router: Router,
               private route: ActivatedRoute) {
-    this.listService.getList().subscribe(
+    this.todoService.getList().subscribe(
       () => this.isLoading = false
     );
   }
 
   ngOnInit() {
     this.getList();
-    this.subscription = this.listService.changed.subscribe(() => this.getList());
+    this.subscription = this.todoService.changed.subscribe(() => this.getList());
     this.route.params.subscribe((params: Params) => this.tabId = params.tabId); // TODO check params.tabId
   }
 
@@ -36,7 +36,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
 
   getList() {
-    this.list = this.listService.get(false, this.tabId);
+    this.list = this.todoService.get(false, this.tabId);
   }
 
   onTabChanged(tabId) {
@@ -48,15 +48,15 @@ export class TodoListComponent implements OnInit, OnDestroy {
   onStatusChanged(id, event) {
     switch (event.type) {
       case 'done':
-        this.listService.done(id, event.value);
+        this.todoService.done(id, event.value);
         break;
 
       case 'rename':
-        this.listService.rename(id, event.value);
+        this.todoService.rename(id, event.value);
         break;
 
       case 'archive':
-        this.listService.archive(id);
+        this.todoService.archive(id);
         break;
     }
   }
