@@ -17,9 +17,11 @@ export class TodoListComponent implements OnInit, OnDestroy {
   filtered: string;
   isLoading = true;
 
-  constructor(private todoService: TodoService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+  constructor(
+    private todoService: TodoService,
+    private router: Router,
+    private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.subscription = this.todoService.getList().subscribe(() => {

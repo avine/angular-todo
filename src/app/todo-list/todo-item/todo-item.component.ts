@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { TodoModel } from '../../todo/todo.model';
 
@@ -7,16 +7,12 @@ import { TodoModel } from '../../todo/todo.model';
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.css']
 })
-export class TodoItemComponent implements OnInit {
+export class TodoItemComponent {
   @Input() item: TodoModel;
   @Output() statusChanged: EventEmitter<any> = new EventEmitter();
   isEdited = false;
 
   constructor() {
-
-  }
-
-  ngOnInit() {
   }
 
   onCheck() {

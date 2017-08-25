@@ -11,7 +11,8 @@ export class TabsComponent implements OnInit {
   @Input() tabDefault: string;
   @Output() tabChanged: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     this.tabId = this.tabDefault;

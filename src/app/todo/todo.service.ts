@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { FirebaseObjectObservable } from 'angularfire2/database';
 
 import { TodoModel } from './todo.model';
 import { DatabaseService } from '../data/database.service';

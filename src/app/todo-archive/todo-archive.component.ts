@@ -14,7 +14,8 @@ export class TodoArchiveComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   isLoading = true;
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService) {
+  }
 
   ngOnInit() {
     this.subscription = this.todoService.getList().subscribe(() => {

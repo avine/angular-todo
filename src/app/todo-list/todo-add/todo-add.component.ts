@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   AfterViewInit,
   AfterViewChecked,
   Output,
@@ -16,7 +15,7 @@ import { TodoModel } from '../../todo/todo.model';
   templateUrl: './todo-add.component.html',
   styleUrls: ['./todo-add.component.css']
 })
-export class TodoAddComponent implements OnInit, AfterViewInit, AfterViewChecked {
+export class TodoAddComponent implements AfterViewInit, AfterViewChecked {
   title: string;
   filter: string;
   role = 'add';
@@ -25,9 +24,7 @@ export class TodoAddComponent implements OnInit, AfterViewInit, AfterViewChecked
   @ViewChild('filterInput') filterInput;
   @Output() filtered: EventEmitter<any> = new EventEmitter();
 
-  constructor(private todoService: TodoService) { }
-
-  ngOnInit() {
+  constructor(private todoService: TodoService) {
   }
 
   ngAfterViewInit() {
