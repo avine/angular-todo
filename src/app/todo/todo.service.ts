@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 
@@ -8,25 +7,18 @@ import { DatabaseService } from '../data/database.service';
 
 @Injectable()
 export class TodoService {
-  private list: TodoModel[]; // TODO: remove this varilable and simply use the last emitted value in ReplaySubject
-  public changed = new Subject<string | void>(); // TODO: remove this varilable and simply use the last emitted value in ReplaySubject
+  private list: TodoModel[] = [];
+  private changed = new ReplaySubject<TodoModel[]>(1);
 
   constructor(private databaseService: DatabaseService) {
-    this.list = [];
-    this.changed.subscribe(action => {
-      if (action !== 'getList') {
-        this.setList();
-      }
+    this.databaseService.getList().subscribe(list => {
+      this.list = list || [];
+      this.changed.next(this.list);
     });
   }
 
   getList() {
-    const list: ReplaySubject<any> = this.databaseService.getList();
-    list.subscribe(response => {
-      this.list = response.length ? [].concat(response) : [];
-      this.changed.next('getList');
-    });
-    return list;
+    return this.changed;
   }
 
   setList() {
@@ -57,7 +49,7 @@ export class TodoService {
       return true;
     }
     this.list.push(new TodoModel(title));
-    this.changed.next('create');
+    this.setList();
     return true;
   }
 
@@ -65,7 +57,7 @@ export class TodoService {
     this.list.forEach(item => {
       if (item.id === id) {
         item.done = status;
-        this.changed.next('done');
+        this.setList();
       }
     });
   }
@@ -74,7 +66,7 @@ export class TodoService {
     this.list.forEach(item => {
       if (item.id === id) {
         item.title = title;
-        this.changed.next('rename');
+        this.setList();
       }
     });
   }
@@ -86,7 +78,7 @@ export class TodoService {
         if (!archived) {
           item.id = TodoModel.getId();
         }
-        this.changed.next('archive');
+        this.setList();
       }
     });
   }
@@ -97,7 +89,7 @@ export class TodoService {
       return item.id !== id;
     });
     if (this.list.length !== length) {
-      this.changed.next('delete');
+      this.setList();
     }
   }
 

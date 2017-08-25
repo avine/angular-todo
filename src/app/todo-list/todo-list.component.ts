@@ -11,7 +11,7 @@ import { TodoModel } from '../todo/todo.model';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit, OnDestroy {
-  list: TodoModel[];
+  list: TodoModel[] = [];
   subscription: Subscription;
   tabId = 'all';
   filtered: string;
@@ -19,16 +19,15 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   constructor(private todoService: TodoService,
               private router: Router,
-              private route: ActivatedRoute) {
-    this.todoService.getList().subscribe(
-      () => this.isLoading = false
-    );
-  }
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getList();
-    this.subscription = this.todoService.changed.subscribe(() => this.getList());
-    this.route.params.subscribe((params: Params) => this.tabId = params.tabId); // TODO check params.tabId
+    this.subscription = this.todoService.getList().subscribe(() => {
+      this.isLoading = false;
+      this.getList();
+    });
+    // FIXME: do we have to care about `.unsubscribe` the following subscription ?
+    this.route.params.subscribe((params: Params) => this.tabId = params.tabId); // TODO: check params.tabId
   }
 
   ngOnDestroy () {

@@ -10,19 +10,15 @@ import { TodoModel } from '../todo/todo.model';
   styleUrls: ['./todo-archive.component.css']
 })
 export class TodoArchiveComponent implements OnInit, OnDestroy {
-  list: TodoModel[];
+  list: TodoModel[] = [];
   subscription: Subscription;
   isLoading = true;
 
-  constructor(private todoService: TodoService) {
-    this.todoService.getList().subscribe(
-      () => this.isLoading = false
-    );
-  }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    this.list = this.todoService.get(true);
-    this.subscription = this.todoService.changed.subscribe(() => {
+    this.subscription = this.todoService.getList().subscribe(() => {
+      this.isLoading = false;
       this.list = this.todoService.get(true);
     });
   }

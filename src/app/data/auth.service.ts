@@ -3,9 +3,13 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
+import { IAuth } from './data.interface';
+
 @Injectable()
-export class AuthService {
-  user = new ReplaySubject<firebase.User | null>(1);
+export class AuthService implements IAuth {
+  // TODO: wrap this in something like user.model.ts
+  // an only expose that model
+  public user = new ReplaySubject<firebase.User>(1);
 
   constructor(private afAuth: AngularFireAuth) {
     this.afAuth.auth.onAuthStateChanged(user => this.user.next(user));

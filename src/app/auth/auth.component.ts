@@ -16,6 +16,8 @@ export class AuthComponent implements OnInit {
   error: { code: string, message: string };
 
   constructor(public authService: AuthService, private router: Router) {
+    // FIXME: Might be better to move this in ngOnInit ?
+    // FIXME: do we have to care about `.unsubscribe` the following subscription ?
     this.authService.user.subscribe(user => {
       this.action = user ? 'logout' : 'login';
     });
