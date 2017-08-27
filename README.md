@@ -92,7 +92,11 @@ Don't forget to update `messages.fr.xlf` accordingly...
 
 ## Demo
 
-https://angular-todo-avine.firebaseapp.com/fr/todo/all
+Firebase hosting:
+
+https://angular-todo-avine.firebaseapp.com/
+
+Apache web server:
 
 https://avine.io/projects/angular-todo/
 
