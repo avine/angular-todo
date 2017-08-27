@@ -16,7 +16,7 @@ const bh = argv['bh'] || '/';
 // (which don't have a defined "messages.<lang>.xlf" file)
 const langs = argv['langs'] ? argv['langs'].split(',') : [];
 
-// (option: --dl) Default language to use in apache config when redirecting bad url
+// (option: --dl) Default language to use when redirecting bad url
 const defaultLang = langs.length ? (argv['dl'] || langs[0]) : null;
 
 // (option: --htaccess) Add .htaccess in the dist/ folder ?
@@ -48,10 +48,11 @@ if (!langs.length) {
   // Build app for each language
   langs.forEach((lang, index) => execBuildCmd(lang, index !== 0));
 
-  // Build apache config
-  console.log(chalk.green(`\nConfiguring root (using default language: "${defaultLang}"):`));
+  // Configuring redirection
+  console.log(chalk.green(`\nConfiguring redirection (using default language: "${defaultLang}"):`));
 
-  let index = fs.readFileSync('src/apache/index.html', 'utf8');
+  // html redirection
+  let index = fs.readFileSync('src/redirection/index.html', 'utf8');
   index =
     index
       .replace(/<BASE_HREF>/g, bh)
@@ -61,7 +62,8 @@ if (!langs.length) {
   console.log('dist/index.html');
 
   if (useHtaccess) {
-    let htaccess = fs.readFileSync('src/apache/.htaccess', 'utf8');
+    // url rewriting for apache web server
+    let htaccess = fs.readFileSync('src/redirection/.htaccess', 'utf8');
     htaccess =
       htaccess
         .replace(/<BASE_HREF>/g, bh)

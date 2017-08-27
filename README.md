@@ -23,6 +23,8 @@ firebase init
 
 Login into your Firebase account and initialize a Firebase project in this directory.
 
+Select features: *Realtime Database* and *Hosting sites*.
+
 In this process, do NOT overwrite existing `database.rules.json` and set `dist/` as your public directory.
 
 ```javascript
