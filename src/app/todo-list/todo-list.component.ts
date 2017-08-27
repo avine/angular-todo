@@ -28,7 +28,6 @@ export class TodoListComponent implements OnInit, OnDestroy {
       this.isLoading = false;
       this.getList();
     });
-    // FIXME: do we have to care about `.unsubscribe` the following subscription ?
     this.route.params.subscribe((params: Params) => this.tabId = params.tabId); // TODO: check params.tabId
   }
 

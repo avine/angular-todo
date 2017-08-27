@@ -1,24 +1,18 @@
-<form (ngSubmit)="onCreate()">
-  <div class="input-group">
+<form (ngSubmit)="onCreate(form)" #form="ngForm">
+  <div class="input-group" [ngClass]="{'has-danger': !form.control.valid}">
     <span class="input-group-addon">
       <input type="checkbox" (click)="onSwitchRole()" />
     </span>
 
     <input #titleInput *ngIf="role === 'add'"
-      [(ngModel)]="title"
-      name="title"
-      type="text"
-      placeholder="What to do ?"
-      i18n-placeholder="What to do ?|Placeholder@@WhatToDo"
+      ngModel name="title" type="text"
+      placeholder="What to do ?" i18n-placeholder="What to do ?|Placeholder@@WhatToDo"
       class="form-control" autocomplete="off" />
 
-    <input #filterInput *ngIf="role === 'filter'"
-      (input)="onFilter()"
-      [(ngModel)]="filter"
-      name="filter"
-      type="text"
-      placeholder="Filter"
-      i18n-placeholder="Filter|Placeholder@@FilterBy"
+    <input #filterInput #filterModel="ngModel" *ngIf="role === 'filter'"
+      (input)="onFilter(filterModel)"
+      ngModel name="filter" type="text"
+      placeholder="Filter" i18n-placeholder="Filter|Placeholder@@FilterBy"
       class="form-control" autocomplete="off" />
   </div>
 </form>
