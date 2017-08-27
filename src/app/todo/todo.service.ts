@@ -45,6 +45,7 @@ export class TodoService {
         return false;
       }
       this.archive(match[0].id, false);
+      this.done(match[0].id, false);
       return true;
     }
     this.list.push(new TodoModel(title));
